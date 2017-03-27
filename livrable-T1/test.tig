@@ -39,4 +39,9 @@ function
 var
 type
 
-if ( var ) then + else /;
+if ( var )
+    then +; 
+    else /;
+
+if (var a=5) then
+    print("Hello world!");

@@ -13,15 +13,18 @@ import jtiger.util.exceptions.LexException;
 %yylexthrow}
 %unicode
 
+// GESTION DES ERREURS
+%line
+%column
+
 %cup
 %{ 
     Symbol symbol(int type) {
-       /* FIX ME */
-       return new Symbol(type);
+       return new Symbol(type, yyline, yycolumn);
     }
 
     Symbol symbol(int type, Object val) {
-       /* FIX ME */
+       /* return new Symbol(type, yyline, yycolumn, value); */
        return null;
     }
 

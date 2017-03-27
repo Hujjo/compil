@@ -10,6 +10,9 @@ package jtiger.util;
  */
 public class Position {
 
+    int line;
+    int column;
+
     /**
      * Class contructor. 
      *
@@ -17,7 +20,8 @@ public class Position {
      * @param yycolumn     the column number, yycolumn in JFlex
      */
 	public Position(int yyline, int yycolumn) {
-        /* FIXME */
+        this.line = yyline;
+        this.column = yycolumn;
 	}
 
     /**
@@ -28,12 +32,11 @@ public class Position {
      * with no clear originating source code location.
      */
 	public Position() {
-        /* FIXME */
+        this.line = 0;
+        this.column = 0;
 	}
 
-	@Override
 	public String toString() {
-        /* FIXME */
-        return "FIXME";
+        return "ERROR: line:"+(this.line+1)+" column:"+(this.column+1);
 	}
 }
