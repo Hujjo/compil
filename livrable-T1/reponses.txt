@@ -1,0 +1,6 @@
+TP1
+
+Gestion des mots clés, signes et opérateurs
+
+1. Tout ensemble composé de "NIL" et de "\n" autant de fois que l'on veut 
+et dans n'importe quel ordre.
