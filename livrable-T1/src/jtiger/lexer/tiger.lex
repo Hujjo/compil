@@ -24,8 +24,7 @@ import jtiger.util.exceptions.LexException;
     }
 
     Symbol symbol(int type, Object val) {
-       /* return new Symbol(type, yyline, yycolumn, value); */
-       return null;
+       return new Symbol(type, yyline, yycolumn, val);
     }
 
     StringBuffer buf;
@@ -95,6 +94,21 @@ break    {return symbol(sym.BREAK);}
 function {return symbol(sym.FUNCTION);}
 var      {return symbol(sym.VAR);}
 type     {return symbol(sym.TYPE);}
+
+// GESTION DES IDENTIFIANTS
+/*
+Un identifiant (nom de variable, de fonction, de type, de champ): 
+Commence par une lettre (majuscule ou minuscule) et ne contient 
+que des chiffres, des lettres et le symbole tiret bas _.
+*/
+[a-zA-Z][a-zA-Z0-9_]*   {return symbol(sym.ID);}
+
+// GESTION DES ENTIERS
+/*
+Un entier: eg. 42 ou 3245789 ou 27000
+*/
+[0-9][0-9]* {return symbol(sym.ID);}
+
 
   /* Catch illegal tokens */
 . {Errors.error(new Position(yyline, yycolumn), "Unexpected character\n"); 
