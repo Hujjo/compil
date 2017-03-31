@@ -107,7 +107,7 @@ que des chiffres, des lettres et le symbole tiret bas _.
 /*
 Un entier: eg. 42 ou 3245789 ou 27000
 */
-[0-9][0-9]* {return symbol(sym.ID);}
+[0-9][0-9]* {return symbol(sym.INT);}
 
 
   /* Catch illegal tokens */
