@@ -44,4 +44,7 @@ if ( var )
     else /;
 
 if (var a=5) then
-    print("Hello world!");
+    print("Hello world");
+    print("2nd test");
+    
+"hello \t world \n how \r are \\ you \a my \b very \f dear \v computer"

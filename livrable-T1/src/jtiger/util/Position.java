@@ -10,8 +10,8 @@ package jtiger.util;
  */
 public class Position {
 
-    int line;
-    int column;
+    private int line;
+    private int column;
 
     /**
      * Class contructor. 

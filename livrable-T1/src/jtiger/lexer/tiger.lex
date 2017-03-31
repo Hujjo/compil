@@ -17,6 +17,11 @@ import jtiger.util.exceptions.LexException;
 %line
 %column
 
+// GESTION DES CHAINES DE CARACTERES
+%state STRING
+/*  Création d'un état. On change le jeu de règles.*/
+%char
+
 %cup
 %{ 
     Symbol symbol(int type) {
@@ -26,6 +31,8 @@ import jtiger.util.exceptions.LexException;
     Symbol symbol(int type, Object val) {
        return new Symbol(type, yyline, yycolumn, val);
     }
+    
+    Integer a;
 
     StringBuffer buf;
     int comment_depth;
@@ -43,71 +50,101 @@ import jtiger.util.exceptions.LexException;
     }
 %}
 %%
+<YYINITIAL> {
+    // GESTION DES ESPACES
+    "\n"   {}
+    " "    {}
+    "\t"   {}
+    "\r"   {}
+    "\r\n" {}
+    
+    // GESTION DES MOTS CLES SIGNES ET OPERATEURS
+      /* Keywords */
+    ","   {return symbol(sym.COMMA);}
+    ":"   {return symbol(sym.COLON);}
+    ";"   {return symbol(sym.SEMICOLON);}
+    "("   {return symbol(sym.LPAREN);}
+    ")"   {return symbol(sym.RPAREN);}
+    "["   {return symbol(sym.LBRACK);}
+    "]"   {return symbol(sym.RBRACK);}
+    "{"   {return symbol(sym.LBRACE);}
+    "}"   {return symbol(sym.RBRACE);}
+    "."   {return symbol(sym.DOT);}
+    "+"   {return symbol(sym.PLUS);}
+    "-"   {return symbol(sym.MINUS);}
+    "*"   {return symbol(sym.TIMES);}
+    "/"   {return symbol(sym.DIVIDE);}
+    "="   {return symbol(sym.EQ);}
+    "<>"  {return symbol(sym.NEQ);}
+    "<"   {return symbol(sym.LT);}
+    "<="  {return symbol(sym.LE);}
+    ">"   {return symbol(sym.GT);}
+    ">="  {return symbol(sym.GE);}
+    "&"   {return symbol(sym.AND);}
+    "|"   {return symbol(sym.OR);}
+    ":="  {return symbol(sym.ASSIGN);}
+    
+    nil      {return symbol(sym.NIL);}
+    array    {return symbol(sym.ARRAY);}
+    if       {return symbol(sym.IF);}
+    then     {return symbol(sym.THEN);}
+    else     {return symbol(sym.ELSE);}
+    while    {return symbol(sym.WHILE);}
+    for      {return symbol(sym.FOR);}
+    to       {return symbol(sym.TO);}
+    do       {return symbol(sym.DO);}
+    let      {return symbol(sym.LET);}
+    in       {return symbol(sym.IN);}
+    end      {return symbol(sym.END);}
+    of       {return symbol(sym.OF);}
+    break    {return symbol(sym.BREAK);}
+    function {return symbol(sym.FUNCTION);}
+    var      {return symbol(sym.VAR);}
+    type     {return symbol(sym.TYPE);}
+    
+    // GESTION DES IDENTIFIANTS
+    [a-zA-Z][a-zA-Z0-9_]*   {return symbol(sym.ID, yytext());}
+    
+    // GESTION DES ENTIERS
+    [0-9][0-9]* {return symbol(sym.INT, a.decode(yytext()));}
 
-// GESTION DES ESPACES
-"\n"   {}
-" "    {}
-"\t"   {}
-"\r"   {}
-"\r\n" {}
+    // GESTION DES CHAINES DE CARACTERES
+    /* Lorsque le caractère " est rencontré changer l'état */
+    /* du lexeur, au sous-automate STRING */
+    "\"" {start_string(); yybegin(STRING);} 
+}
 
-// GESTION DES MOTS CLES SIGNES ET OPERATEURS
-  /* Keywords */
-","   {return symbol(sym.COMMA);}
-":"   {return symbol(sym.COLON);}
-";"   {return symbol(sym.SEMICOLON);}
-"("   {return symbol(sym.LPAREN);}
-")"   {return symbol(sym.RPAREN);}
-"["   {return symbol(sym.LBRACK);}
-"]"   {return symbol(sym.RBRACK);}
-"{"   {return symbol(sym.LBRACE);}
-"}"   {return symbol(sym.RBRACE);}
-"."   {return symbol(sym.DOT);}
-"+"   {return symbol(sym.PLUS);}
-"-"   {return symbol(sym.MINUS);}
-"*"   {return symbol(sym.TIMES);}
-"/"   {return symbol(sym.DIVIDE);}
-"="   {return symbol(sym.EQ);}
-"<>"  {return symbol(sym.NEQ);}
-"<"   {return symbol(sym.LT);}
-"<="  {return symbol(sym.LE);}
-">"   {return symbol(sym.GT);}
-">="  {return symbol(sym.GE);}
-"&"   {return symbol(sym.AND);}
-"|"   {return symbol(sym.OR);}
-":="  {return symbol(sym.ASSIGN);}
+<STRING> {
+    /* ... règles qui ne s'appliquent qu'à l'intérieur d'une chaîne. */
+    // !#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ 
+//    [a-zA-Z0-9 ]*   {start_string(); for(int i=0 ; i<yylength() ; i++) string_append(yycharat(i));}
+    [a-zA-Z0-9 ]    {string_append(yycharat(0));}
+    
+    \\t     { string_append('\t'); }
+    \\n     { string_append('\n'); }
+    \\r     { string_append('\r'); }
+    \\      { string_append('\\'); }
+    
+    \a      { string_append('\a'); }
+    \b      { string_append('\b'); }
+    \f      { string_append('\f'); }
+    \v      { string_append('\v'); }
 
-nil      {return symbol(sym.NIL);}
-array    {return symbol(sym.ARRAY);}
-if       {return symbol(sym.IF);}
-then     {return symbol(sym.THEN);}
-else     {return symbol(sym.ELSE);}
-while    {return symbol(sym.WHILE);}
-for      {return symbol(sym.FOR);}
-to       {return symbol(sym.TO);}
-do       {return symbol(sym.DO);}
-let      {return symbol(sym.LET);}
-in       {return symbol(sym.IN);}
-end      {return symbol(sym.END);}
-of       {return symbol(sym.OF);}
-break    {return symbol(sym.BREAK);}
-function {return symbol(sym.FUNCTION);}
-var      {return symbol(sym.VAR);}
-type     {return symbol(sym.TYPE);}
+    /* Lorsque le caractère " est rencontré revenir à l'état par défault */
+    \" {yybegin(YYINITIAL);
+        return symbol(sym.STRING,get_string());}
+    
 
-// GESTION DES IDENTIFIANTS
-/*
-Un identifiant (nom de variable, de fonction, de type, de champ): 
-Commence par une lettre (majuscule ou minuscule) et ne contient 
-que des chiffres, des lettres et le symbole tiret bas _.
+
+/*    
+\num où num est composé exactement de trois chiffres en octal. num doit être compris entre 000 et 377, le lexeur doit signaler une erreur pour toute autre valeur. Cette séquence d’échappement représente le caractère dont le code ASCII est num.
+\\, représente le caractère \.
+
+
 */
-[a-zA-Z][a-zA-Z0-9_]*   {return symbol(sym.ID);}
 
-// GESTION DES ENTIERS
-/*
-Un entier: eg. 42 ou 3245789 ou 27000
-*/
-[0-9][0-9]* {return symbol(sym.INT);}
+
+}
 
 
   /* Catch illegal tokens */
