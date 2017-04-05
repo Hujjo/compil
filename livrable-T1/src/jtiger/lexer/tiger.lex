@@ -116,25 +116,26 @@ import jtiger.util.exceptions.LexException;
 
 <STRING> {
     /* ... règles qui ne s'appliquent qu'à l'intérieur d'une chaîne. */
-    // !#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ 
+    
 //    [a-zA-Z0-9 ]*   {start_string(); for(int i=0 ; i<yylength() ; i++) string_append(yycharat(i));}
-    [a-zA-Z0-9 ]    {string_append(yycharat(0));}
-    
-    \\t     { string_append('\t'); }
-    \\n     { string_append('\n'); }
-    \\r     { string_append('\r'); }
-    \\      { string_append('\\'); }
-    
-    \a      { string_append('\a'); }
-    \b      { string_append('\b'); }
-    \f      { string_append('\f'); }
-    \v      { string_append('\v'); }
+    [a-zA-Z0-9!#$%&()*+,-./:;<=>?@_|~{} ]    {string_append(yycharat(0));}
 
-    /* Lorsque le caractère " est rencontré revenir à l'état par défault */
-    \" {yybegin(YYINITIAL);
-        return symbol(sym.STRING,get_string());}
-    
+    \'      { string_append(yycharat(0)); }
+    \[      { string_append(yycharat(0)); }
+    \]      { string_append(yycharat(0)); }
+    \^      { string_append(yycharat(0)); }
 
+    \t     { string_append('A'); }
+    \\n     {  }
+    \r     { string_append('B'); }
+//    \\      { string_append('C'); }
+    
+    \a      { string_append('D'); }
+    \b      { string_append('E'); }
+    \f      { string_append('F'); }
+    \v      { string_append('G'); }
+    
+//    /[0-3][0-7][0-7]    { string_append(yycharat(0)); }
 
 /*    
 \num où num est composé exactement de trois chiffres en octal. num doit être compris entre 000 et 377, le lexeur doit signaler une erreur pour toute autre valeur. Cette séquence d’échappement représente le caractère dont le code ASCII est num.
@@ -143,7 +144,9 @@ import jtiger.util.exceptions.LexException;
 
 */
 
-
+    /* Lorsque le caractère " est rencontré revenir à l'état par défault */
+    \" {yybegin(YYINITIAL);
+        return symbol(sym.STRING,get_string());}
 }
 
 
