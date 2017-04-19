@@ -13,6 +13,10 @@ parser code {:
     }
 :};
 
+/* Preliminaries to set up and use the scanner.  */
+//init with {: scanner.init();              :};
+//scan with {: return scanner.next_token(); :};
+
 /* Terminals */
 terminal COMMA,COLON,SEMICOLON,LPAREN,RPAREN,LBRACK,RBRACK;
 terminal LBRACE,RBRACE,DOT,PLUS,MINUS,TIMES,DIVIDE,EQ,NEQ,LT,LE,GT,GE;
@@ -26,20 +30,87 @@ terminal LOWPREC,UMINUS;
 nonterminal Integer exp,intExp,opExp,negExp,seqExp,program;
 
 /* Precedence */
-
-/* FIXME */
+precedence left PLUS, MINUS;
+precedence left TIMES, DIVIDE;
+precedence left UMINUS, AND, OR;
+precedence nonassoc EQ, NEQ, LT, LE, GT, GE;
 
 /* Grammar */
 
 start with program;
  
-program::= exp:e 
-{: 
-System.out.println("Le résultat est:" + e);
-RESULT = e;
-:};
+program::=  exp:e
+        {: System.out.println("Le résultat est: " + e);
+            RESULT = new Integer(e.intValue());
+        :};
 
+exp ::= intExp:e {: RESULT=e; :}
+    |   opExp:e {: RESULT=e; :}
+//    |   negExp
+//    |   seqExp
+    ;
+
+
+/* intExp */
+intExp ::= INT:n
+        {: RESULT = n; :}
+        ;
+
+/* opExp */
+opExp ::= exp:e1 PLUS exp:e2
+        {: RESULT = new Integer(e1.intValue() + e2.intValue()); :}
+        |
+        exp:e1 MINUS exp:e2
+        {: RESULT = new Integer(e1.intValue() - e2.intValue()); :}
+        |
+        exp:e1 TIMES exp:e2
+        {: RESULT = new Integer(e1.intValue() * e2.intValue()); :}
+        |
+        exp:e1 DIVIDE exp:e2
+        {: RESULT = new Integer(e1.intValue() / e2.intValue()); :}
+        |
+        exp:e1 EQ exp:e2
+        {: if((e1.intValue() == e2.intValue()))
+            RESULT = 1;
+           else
+            RESULT = 0; :}
+        |
+        exp:e1 NEQ exp:e2
+        {: if((e1.intValue() != e2.intValue()))
+            RESULT = 1;
+           else
+            RESULT = 0; :}
+        |
+        exp:e1 LT exp:e2
+        {: if((e1.intValue() < e2.intValue()))
+            RESULT = 1;
+           else
+            RESULT = 0; :}
+        |
+        exp:e1 LE exp:e2
+        {: if((e1.intValue() <= e2.intValue()))
+            RESULT = 1;
+           else
+            RESULT = 0; :}
+        |
+        exp:e1 GT exp:e2
+        {: if((e1.intValue() > e2.intValue()))
+            RESULT = 1;
+           else
+            RESULT = 0; :}
+        |
+        exp:e1 GE exp:e2
+        {: if((e1.intValue() >= e2.intValue()))
+            RESULT = 1;
+           else
+            RESULT = 0; :}
+        |
+        LPAREN exp:e RPAREN
+        {: RESULT = e; :}
+        ;
+
+/* negExp */
 /* FIXME */
 
-
-
+/* seqExp */
+/* FIXME */
