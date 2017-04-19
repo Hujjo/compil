@@ -54,4 +54,7 @@ if (var a=5) then
 "}"
 "^"
 "\"
+"\t"
+"\n"
+"\r"
 "hello \t world \n how \r are \\ you \a my \b very \f dear \v computer"

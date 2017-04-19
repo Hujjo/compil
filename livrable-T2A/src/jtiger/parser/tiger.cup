@@ -1,0 +1,45 @@
+package jtiger.parser;
+import java.util.LinkedList;
+import java.util.Arrays;
+import java_cup.runtime.*;
+import jtiger.util.Position;
+import jtiger.util.Errors;
+
+parser code {:
+    @Override
+    public void syntax_error(Symbol s) {
+        Position p = new Position(s.left, s.right);
+        Errors.error(p, "Parser Error");
+    }
+:};
+
+/* Terminals */
+terminal COMMA,COLON,SEMICOLON,LPAREN,RPAREN,LBRACK,RBRACK;
+terminal LBRACE,RBRACE,DOT,PLUS,MINUS,TIMES,DIVIDE,EQ,NEQ,LT,LE,GT,GE;
+terminal AND,OR,ASSIGN,ARRAY,IF,THEN,ELSE,WHILE,FOR,TO,DO,LET,IN,END,OF;
+terminal BREAK,NIL,FUNCTION,VAR,TYPE;
+terminal String ID, STRING;
+terminal Integer INT;
+terminal LOWPREC,UMINUS;
+
+/* Non-terminals */
+nonterminal Integer exp,intExp,opExp,negExp,seqExp,program;
+
+/* Precedence */
+
+/* FIXME */
+
+/* Grammar */
+
+start with program;
+ 
+program::= exp:e 
+{: 
+System.out.println("Le résultat est:" + e);
+RESULT = e;
+:};
+
+/* FIXME */
+
+
+

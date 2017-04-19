@@ -125,22 +125,21 @@ import jtiger.util.exceptions.LexException;
     \]      { string_append(yycharat(0)); }
     \^      { string_append(yycharat(0)); }
 
-    \t     { string_append('A'); }
-    \\n     {  }
-    \r     { string_append('B'); }
-//    \\      { string_append('C'); }
+    \\     { string_append(yycharat(0)); }
+    \\t     { string_append(yycharat(0)); }
+    \\n     { string_append(yycharat(0)); }
+    \\r     { string_append(yycharat(0)); }
     
-    \a      { string_append('D'); }
+/*  \a      { string_append('D'); }
     \b      { string_append('E'); }
     \f      { string_append('F'); }
     \v      { string_append('G'); }
-    
+  */  
 //    /[0-3][0-7][0-7]    { string_append(yycharat(0)); }
 
 /*    
 \num où num est composé exactement de trois chiffres en octal. num doit être compris entre 000 et 377, le lexeur doit signaler une erreur pour toute autre valeur. Cette séquence d’échappement représente le caractère dont le code ASCII est num.
 \\, représente le caractère \.
-
 
 */
 
