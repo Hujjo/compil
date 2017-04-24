@@ -12,6 +12,7 @@ parser code {:
         Position p = new Position(s.left, s.right);
         Errors.error(p, "Parser Error");
     }
+    //private LinkedList<Exp> l = new LinkedList<Exp>();
 :};
 
 /* Terminals */
@@ -24,7 +25,8 @@ terminal Integer INT;
 terminal LOWPREC,UMINUS;
 
 /* Non-terminals */
-nonterminal Integer exp,intExp,opExp,negExp,seqExp,program;
+nonterminal Exp exp,intExp,opExp,negExp,seqExp,program;
+nonterminal SeqExp exps;
 
 /* Precedence */
 precedence left OR;
@@ -40,8 +42,8 @@ precedence left LPAREN, RPAREN;
 start with program;
  
 program::=  exp:e
-        {: System.out.println("Le résultat est: " + e);
-            RESULT = new Integer(e.intValue());
+        {: 
+            RESULT = e;
         :};
 
 exp ::= intExp:e {: RESULT=e; :}
@@ -50,86 +52,61 @@ exp ::= intExp:e {: RESULT=e; :}
     |   seqExp:e {: RESULT=e; :}
     ;
 
-
 /* intExp */
 intExp ::= INT:n
-        {: RESULT = n; :}
+        {: RESULT = new IntegerExp(new Position(nleft,nright), n); :}
         ;
 
 /* opExp */
-opExp ::= exp:e1 PLUS exp:e2
-        {: RESULT = new Integer(e1.intValue() + e2.intValue()); :}
+opExp ::= exp:e1 PLUS:p exp:e2
+        {: RESULT = new OpExp(new Position(pleft,pright), e1, "+", e2); :}
         |
-        exp:e1 MINUS exp:e2
-        {: RESULT = new Integer(e1.intValue() - e2.intValue()); :}
+        exp:e1 MINUS:p exp:e2
+        {: RESULT = new OpExp(new Position(pleft,pright), e1, "-", e2); :}
         |
-        exp:e1 TIMES exp:e2
-        {: RESULT = new Integer(e1.intValue() * e2.intValue()); :}
+        exp:e1 TIMES:p exp:e2
+        {: RESULT = new OpExp(new Position(pleft,pright), e1, "*", e2); :}
         |
-        exp:e1 DIVIDE exp:e2
-        {: RESULT = new Integer(e1.intValue() / e2.intValue()); :}
+        exp:e1 DIVIDE:p exp:e2
+        {: RESULT = new OpExp(new Position(pleft,pright), e1, "/", e2); :}
         |
-        exp:e1 EQ exp:e2
-        {: if(e1.intValue() == e2.intValue())
-            RESULT = 1;
-           else
-            RESULT = 0; :}
+        exp:e1 EQ:p exp:e2
+        {: RESULT = new OpExp(new Position(pleft,pright), e1, "==", e2); :}
         |
-        exp:e1 NEQ exp:e2
-        {: if(e1.intValue() != e2.intValue())
-            RESULT = 1;
-           else
-            RESULT = 0; :}
+        exp:e1 NEQ:p exp:e2
+        {: RESULT = new OpExp(new Position(pleft,pright), e1, "<>", e2); :}
         |
-        exp:e1 LT exp:e2
-        {: if(e1.intValue() < e2.intValue())
-            RESULT = 1;
-           else
-            RESULT = 0; :}
+        exp:e1 LT:p exp:e2
+        {: RESULT = new OpExp(new Position(pleft,pright), e1, "<", e2); :}
         |
-        exp:e1 LE exp:e2
-        {: if(e1.intValue() <= e2.intValue())
-            RESULT = 1;
-           else
-            RESULT = 0; :}
+        exp:e1 LE:p exp:e2
+        {: RESULT = new OpExp(new Position(pleft,pright), e1, "<=", e2); :}
         |
-        exp:e1 GT exp:e2
-        {: if(e1.intValue() > e2.intValue())
-            RESULT = 1;
-           else
-            RESULT = 0; :}
+        exp:e1 GT:p exp:e2
+        {: RESULT = new OpExp(new Position(pleft,pright), e1, ">", e2); :}
         |
-        exp:e1 GE exp:e2
-        {: if((e1.intValue() >= e2.intValue()))
-            RESULT = 1;
-           else
-            RESULT = 0; :}
+        exp:e1 GE:p exp:e2
+        {: RESULT = new OpExp(new Position(pleft,pright), e1, ">=", e2); :}
         |
-        exp:e1 AND exp:e2
-        {: if(e1.intValue() > 0) {
-            if(e1.intValue() > 0)
-                RESULT = 1;
-            else
-                RESULT = 0;
-           } else
-            RESULT = 0; :}
+        exp:e1 AND:p exp:e2
+        {: 
+           RESULT = new IfExp(new Position(pleft,pright), e1, e2, new IntegerExp(new Position(pleft,pright), 0));
+        :}
         |
-        exp:e1 OR exp:e2
-        {: if(e1.intValue() == e2.intValue()) {
-            if(e1.intValue() == 0)
-                RESULT = 0;
-            else
-                RESULT = 1;
-           } else
-            RESULT = 1; :}
+        exp:e1 OR:p exp:e2
+        {: 
+            RESULT = new IfExp(new Position(pleft,pright), e1, new IntegerExp(new Position(pleft,pright), 1), e2); :}
         ;
 
 /* negExp */
-negExp::= MINUS exp:e
-        {: RESULT = new Integer(0 - e.intValue()); :}
+negExp::= MINUS:p exp:e
+        {: RESULT = new OpExp(new Position(pleft,pright), new IntegerExp(new Position(pleft,pright), 0), "-", e); :}
+        // ajouter des parenthèses pour gérer précédences
         ;
 
 /* seqExp */
-seqExp::= LPAREN exp:e RPAREN
-        {: RESULT = e; :}
-        ;
+seqExp::= LPAREN:l exps:es RPAREN:r {: RESULT=es; :} ;
+
+exps ::= exp:e {: LinkedList<Exp> l = new LinkedList<Exp>(); l.add(e); RESULT = new SeqExp(new Position(eleft,eright), l); :}
+    |    exp:e SEMICOLON:s exps:es {: LinkedList<Exp> l = new LinkedList<Exp>(); l.add(e); RESULT = new SeqExp(new Position(eleft,eright), l); :}
+    ;
