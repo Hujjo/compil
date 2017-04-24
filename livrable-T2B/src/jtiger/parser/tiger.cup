@@ -2,6 +2,7 @@ package jtiger.parser;
 import java.util.LinkedList;
 import java.util.Arrays;
 import java_cup.runtime.*;
+import jtiger.ast.*;
 import jtiger.util.Position;
 import jtiger.util.Errors;
 
