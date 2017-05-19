@@ -101,12 +101,16 @@ opExp ::= exp:e1 PLUS:p exp:e2
 /* negExp */
 negExp::= MINUS:p exp:e
         {: RESULT = new OpExp(new Position(pleft,pright), new IntegerExp(new Position(pleft,pright), 0), "-", e); :}
-        // ajouter des parenthèses pour gérer précédences
+        %prec UMINUS
         ;
 
 /* seqExp */
-seqExp::= LPAREN:l exps:es RPAREN:r {: RESULT=es; :} ;
+seqExp::= LPAREN:l exps:es RPAREN:r {: RESULT=es; :}
+        | 
+        LPAREN RPAREN:s 
+        {:LinkedList<Exp> l = new LinkedList<Exp>(); RESULT = new SeqExp(new Position(sleft,sright), l);:}
+        ;
 
 exps ::= exp:e {: LinkedList<Exp> l = new LinkedList<Exp>(); l.add(e); RESULT = new SeqExp(new Position(eleft,eright), l); :}
-    |    exp:e SEMICOLON:s exps:es {: LinkedList<Exp> l = new LinkedList<Exp>(); l.add(e); RESULT = new SeqExp(new Position(eleft,eright), l); :}
+    |    exps:es SEMICOLON exp:e {:  es.exps.add(e); RESULT = es; :}
     ;

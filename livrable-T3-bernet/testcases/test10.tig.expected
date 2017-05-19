@@ -1,0 +1,8 @@
+  WhileExp [pos='2:1' _typeDefinition='null']
+    SeqExp [pos='2:10' _typeDefinition='null']
+      OpExp [pos='2:10' _typeDefinition='null' op='>']
+        IntegerExp [pos='2:7' _typeDefinition='null' value='10']
+        IntegerExp [pos='2:12' _typeDefinition='null' value='5']
+    OpExp [pos='2:19' _typeDefinition='null' op='+']
+      IntegerExp [pos='2:18' _typeDefinition='null' value='5']
+      IntegerExp [pos='2:20' _typeDefinition='null' value='6']

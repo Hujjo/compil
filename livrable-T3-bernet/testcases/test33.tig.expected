@@ -1,0 +1,5 @@
+  LetExp [pos='2:1' _typeDefinition='null']
+    VarDec [pos='3:6' _typeDefinition='null' _forVariable='null' _depth='0' _access='null' _escapes='false' name='a' type='null']
+      RecordExp [pos='3:10' _typeDefinition='null' type='rectype']
+    SeqExp [pos='5:2' _typeDefinition='null']
+      IntegerExp [pos='5:2' _typeDefinition='null' value='0']

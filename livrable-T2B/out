@@ -1,0 +1,1124 @@
+Buildfile: /home/ubuntu/workspace/livrable-T2B/build.xml
+
+init:
+
+cup:
+      [cup] This is CUP v0.11a beta 20060608
+      [cup] Authors : Scott E. Hudson, Frank Flannery, Andrea Flexeder, Michael Petter and C. Scott Ananian
+      [cup] Bugreports to petter@cs.tum.edu
+      [cup] checking, whether this run is necessary
+      [cup] Parserfile and symbolfile are existing
+      [cup] Parserfile /home/ubuntu/workspace/livrable-T2B/generate/jtiger/parser/parser.java isn't actual
+      [cup] Symbolfile /home/ubuntu/workspace/livrable-T2B/generate/jtiger/parser/sym.java isn't actual
+      [cup] Warning : Terminal "FUNCTION" was declared but never used
+      [cup] Warning : Terminal "UMINUS" was declared but never used
+      [cup] Warning : Terminal "ARRAY" was declared but never used
+      [cup] Warning : Terminal "FOR" was declared but never used
+      [cup] Warning : Terminal "LOWPREC" was declared but never used
+      [cup] Warning : Terminal "TYPE" was declared but never used
+      [cup] Warning : Terminal "NIL" was declared but never used
+      [cup] Warning : Terminal "IN" was declared but never used
+      [cup] Warning : Terminal "COMMA" was declared but never used
+      [cup] Warning : Terminal "ASSIGN" was declared but never used
+      [cup] Warning : Terminal "IF" was declared but never used
+      [cup] Warning : Terminal "ID" was declared but never used
+      [cup] Warning : Terminal "DOT" was declared but never used
+      [cup] Warning : Terminal "OF" was declared but never used
+      [cup] Warning : Terminal "BREAK" was declared but never used
+      [cup] Warning : Terminal "LBRACK" was declared but never used
+      [cup] Warning : Terminal "COLON" was declared but never used
+      [cup] Warning : Terminal "LBRACE" was declared but never used
+      [cup] Warning : Terminal "ELSE" was declared but never used
+      [cup] Warning : Terminal "RBRACK" was declared but never used
+      [cup] Warning : Terminal "TO" was declared but never used
+      [cup] Warning : Terminal "WHILE" was declared but never used
+      [cup] Warning : Terminal "LET" was declared but never used
+      [cup] Warning : Terminal "THEN" was declared but never used
+      [cup] Warning : Terminal "RBRACE" was declared but never used
+      [cup] Warning : Terminal "END" was declared but never used
+      [cup] Warning : Terminal "STRING" was declared but never used
+      [cup] Warning : Terminal "VAR" was declared but never used
+      [cup] Warning : Terminal "DO" was declared but never used
+      [cup] Warning : *** Reduce/Reduce conflict found in state #10
+      [cup]   between exps ::= exp (*) 
+      [cup]   and     exps ::= exp (*) 
+      [cup]   under symbols: {RPAREN}
+      [cup]   Resolved in favor of the first production.
+      [cup] 
+      [cup] Warning : *** Shift/Reduce conflict found in state #10
+      [cup]   between exps ::= exp (*) 
+      [cup]   under symbol RPAREN
+      [cup]   Resolved in favor of shifting.
+      [cup] 
+      [cup] Warning : *** Shift/Reduce conflict found in state #10
+      [cup]   between exps ::= exp (*) 
+      [cup]   under symbol RPAREN
+      [cup]   Resolved in favor of shifting.
+      [cup] 
+      [cup] Warning : *** Production "exps ::= exp " never reduced
+      [cup] Error : *** More conflicts encountered than expected -- parser generation aborted
+      [cup] ===== Terminals =====
+      [cup] [0]EOF [1]error [2]COMMA [3]COLON [4]SEMICOLON 
+      [cup] [5]LPAREN [6]RPAREN [7]LBRACK [8]RBRACK [9]LBRACE 
+      [cup] [10]RBRACE [11]DOT [12]PLUS [13]MINUS [14]TIMES 
+      [cup] [15]DIVIDE [16]EQ [17]NEQ [18]LT [19]LE 
+      [cup] [20]GT [21]GE [22]AND [23]OR [24]ASSIGN 
+      [cup] [25]ARRAY [26]IF [27]THEN [28]ELSE [29]WHILE 
+      [cup] [30]FOR [31]TO [32]DO [33]LET [34]IN 
+      [cup] [35]END [36]OF [37]BREAK [38]NIL [39]FUNCTION 
+      [cup] [40]VAR [41]TYPE [42]ID [43]STRING [44]INT 
+      [cup] [45]LOWPREC [46]UMINUS 
+      [cup] 
+      [cup] ===== Non terminals =====
+      [cup] [0]exp [1]intExp [2]opExp [3]negExp [4]seqExp 
+      [cup] [5]program [6]exps 
+      [cup] 
+      [cup] ===== Productions =====
+      [cup] [0] $START ::= program EOF 
+      [cup] [1] program ::= exp 
+      [cup] [2] exp ::= intExp 
+      [cup] [3] exp ::= opExp 
+      [cup] [4] exp ::= negExp 
+      [cup] [5] exp ::= seqExp 
+      [cup] [6] intExp ::= INT 
+      [cup] [7] opExp ::= exp PLUS exp 
+      [cup] [8] opExp ::= exp MINUS exp 
+      [cup] [9] opExp ::= exp TIMES exp 
+      [cup] [10] opExp ::= exp DIVIDE exp 
+      [cup] [11] opExp ::= exp EQ exp 
+      [cup] [12] opExp ::= exp NEQ exp 
+      [cup] [13] opExp ::= exp LT exp 
+      [cup] [14] opExp ::= exp LE exp 
+      [cup] [15] opExp ::= exp GT exp 
+      [cup] [16] opExp ::= exp GE exp 
+      [cup] [17] opExp ::= exp AND exp 
+      [cup] [18] opExp ::= exp OR exp 
+      [cup] [19] negExp ::= MINUS exp 
+      [cup] [20] seqExp ::= LPAREN exps RPAREN 
+      [cup] [21] exps ::= exp 
+      [cup] [22] exps ::= exp SEMICOLON exps 
+      [cup] [23] exps ::= exp 
+      [cup] 
+      [cup] ===== Viable Prefix Recognizer =====
+      [cup] START lalr_state [0]: {
+      [cup]   [exp ::= (*) seqExp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp DIVIDE exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GT exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [seqExp ::= (*) LPAREN exps RPAREN , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) opExp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp MINUS exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LT exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp OR exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [program ::= (*) exp , {EOF }]
+      [cup]   [intExp ::= (*) INT , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp EQ exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GE exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) negExp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp TIMES exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LE exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [negExp ::= (*) MINUS exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) intExp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp PLUS exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp NEQ exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp AND exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [$START ::= (*) program EOF , {EOF }]
+      [cup] }
+      [cup] transition on LPAREN to state [9]
+      [cup] transition on intExp to state [8]
+      [cup] transition on opExp to state [7]
+      [cup] transition on negExp to state [6]
+      [cup] transition on program to state [5]
+      [cup] transition on seqExp to state [4]
+      [cup] transition on exp to state [3]
+      [cup] transition on INT to state [2]
+      [cup] transition on MINUS to state [1]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [1]: {
+      [cup]   [exp ::= (*) seqExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [seqExp ::= (*) LPAREN exps RPAREN , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) opExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [intExp ::= (*) INT , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) negExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [negExp ::= MINUS (*) exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [negExp ::= (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) intExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on INT to state [2]
+      [cup] transition on exp to state [40]
+      [cup] transition on LPAREN to state [9]
+      [cup] transition on negExp to state [6]
+      [cup] transition on MINUS to state [1]
+      [cup] transition on seqExp to state [4]
+      [cup] transition on opExp to state [7]
+      [cup] transition on intExp to state [8]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [2]: {
+      [cup]   [intExp ::= INT (*) , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [3]: {
+      [cup]   [opExp ::= exp (*) AND exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LE exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) EQ exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) MINUS exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GE exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LT exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) DIVIDE exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) PLUS exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [program ::= exp (*) , {EOF }]
+      [cup]   [opExp ::= exp (*) OR exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GT exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) NEQ exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) TIMES exp , {EOF PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on OR to state [25]
+      [cup] transition on LT to state [24]
+      [cup] transition on TIMES to state [23]
+      [cup] transition on GT to state [21]
+      [cup] transition on LE to state [20]
+      [cup] transition on EQ to state [19]
+      [cup] transition on PLUS to state [18]
+      [cup] transition on NEQ to state [17]
+      [cup] transition on GE to state [16]
+      [cup] transition on DIVIDE to state [15]
+      [cup] transition on AND to state [14]
+      [cup] transition on MINUS to state [13]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [4]: {
+      [cup]   [exp ::= seqExp (*) , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [5]: {
+      [cup]   [$START ::= program (*) EOF , {EOF }]
+      [cup] }
+      [cup] transition on EOF to state [39]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [6]: {
+      [cup]   [exp ::= negExp (*) , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [7]: {
+      [cup]   [exp ::= opExp (*) , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [8]: {
+      [cup]   [exp ::= intExp (*) , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [9]: {
+      [cup]   [exp ::= (*) seqExp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp DIVIDE exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GT exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [seqExp ::= LPAREN (*) exps RPAREN , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [seqExp ::= (*) LPAREN exps RPAREN , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) opExp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp MINUS exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LT exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp OR exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exps ::= (*) exp , {RPAREN }]
+      [cup]   [intExp ::= (*) INT , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp EQ exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GE exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exps ::= (*) exp , {RPAREN }]
+      [cup]   [exp ::= (*) negExp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp TIMES exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LE exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [negExp ::= (*) MINUS exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) intExp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp PLUS exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp NEQ exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp AND exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exps ::= (*) exp SEMICOLON exps , {RPAREN }]
+      [cup] }
+      [cup] transition on LPAREN to state [9]
+      [cup] transition on exps to state [11]
+      [cup] transition on intExp to state [8]
+      [cup] transition on opExp to state [7]
+      [cup] transition on negExp to state [6]
+      [cup] transition on seqExp to state [4]
+      [cup] transition on exp to state [10]
+      [cup] transition on INT to state [2]
+      [cup] transition on MINUS to state [1]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [10]: {
+      [cup]   [opExp ::= exp (*) AND exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LE exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) EQ exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) MINUS exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exps ::= exp (*) SEMICOLON exps , {RPAREN }]
+      [cup]   [opExp ::= exp (*) GE exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LT exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) DIVIDE exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) PLUS exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exps ::= exp (*) , {RPAREN }]
+      [cup]   [opExp ::= exp (*) OR exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GT exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) NEQ exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) TIMES exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exps ::= exp (*) , {RPAREN }]
+      [cup] }
+      [cup] transition on OR to state [25]
+      [cup] transition on LT to state [24]
+      [cup] transition on TIMES to state [23]
+      [cup] transition on SEMICOLON to state [22]
+      [cup] transition on GT to state [21]
+      [cup] transition on LE to state [20]
+      [cup] transition on EQ to state [19]
+      [cup] transition on PLUS to state [18]
+      [cup] transition on NEQ to state [17]
+      [cup] transition on GE to state [16]
+      [cup] transition on DIVIDE to state [15]
+      [cup] transition on AND to state [14]
+      [cup] transition on MINUS to state [13]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [11]: {
+      [cup]   [seqExp ::= LPAREN exps (*) RPAREN , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on RPAREN to state [12]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [12]: {
+      [cup]   [seqExp ::= LPAREN exps RPAREN (*) , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [13]: {
+      [cup]   [exp ::= (*) seqExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [seqExp ::= (*) LPAREN exps RPAREN , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp MINUS (*) exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) opExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [intExp ::= (*) INT , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) negExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [negExp ::= (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) intExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on INT to state [2]
+      [cup] transition on exp to state [38]
+      [cup] transition on LPAREN to state [9]
+      [cup] transition on negExp to state [6]
+      [cup] transition on MINUS to state [1]
+      [cup] transition on seqExp to state [4]
+      [cup] transition on opExp to state [7]
+      [cup] transition on intExp to state [8]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [14]: {
+      [cup]   [exp ::= (*) seqExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [seqExp ::= (*) LPAREN exps RPAREN , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) opExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [intExp ::= (*) INT , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) negExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [negExp ::= (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) intExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp AND (*) exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on INT to state [2]
+      [cup] transition on exp to state [37]
+      [cup] transition on LPAREN to state [9]
+      [cup] transition on negExp to state [6]
+      [cup] transition on MINUS to state [1]
+      [cup] transition on seqExp to state [4]
+      [cup] transition on opExp to state [7]
+      [cup] transition on intExp to state [8]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [15]: {
+      [cup]   [exp ::= (*) seqExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [seqExp ::= (*) LPAREN exps RPAREN , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) opExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [intExp ::= (*) INT , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) negExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [negExp ::= (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) intExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp DIVIDE (*) exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on INT to state [2]
+      [cup] transition on exp to state [36]
+      [cup] transition on LPAREN to state [9]
+      [cup] transition on negExp to state [6]
+      [cup] transition on MINUS to state [1]
+      [cup] transition on seqExp to state [4]
+      [cup] transition on opExp to state [7]
+      [cup] transition on intExp to state [8]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [16]: {
+      [cup]   [exp ::= (*) seqExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [seqExp ::= (*) LPAREN exps RPAREN , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) opExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [intExp ::= (*) INT , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp GE (*) exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) negExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [negExp ::= (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) intExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on INT to state [2]
+      [cup] transition on exp to state [35]
+      [cup] transition on LPAREN to state [9]
+      [cup] transition on negExp to state [6]
+      [cup] transition on MINUS to state [1]
+      [cup] transition on seqExp to state [4]
+      [cup] transition on opExp to state [7]
+      [cup] transition on intExp to state [8]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [17]: {
+      [cup]   [exp ::= (*) seqExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [seqExp ::= (*) LPAREN exps RPAREN , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) opExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [intExp ::= (*) INT , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) negExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [negExp ::= (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp NEQ (*) exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) intExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on INT to state [2]
+      [cup] transition on exp to state [34]
+      [cup] transition on LPAREN to state [9]
+      [cup] transition on negExp to state [6]
+      [cup] transition on MINUS to state [1]
+      [cup] transition on seqExp to state [4]
+      [cup] transition on opExp to state [7]
+      [cup] transition on intExp to state [8]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [18]: {
+      [cup]   [exp ::= (*) seqExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [seqExp ::= (*) LPAREN exps RPAREN , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) opExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [intExp ::= (*) INT , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) negExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [negExp ::= (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp PLUS (*) exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) intExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on INT to state [2]
+      [cup] transition on exp to state [33]
+      [cup] transition on LPAREN to state [9]
+      [cup] transition on negExp to state [6]
+      [cup] transition on MINUS to state [1]
+      [cup] transition on seqExp to state [4]
+      [cup] transition on opExp to state [7]
+      [cup] transition on intExp to state [8]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [19]: {
+      [cup]   [exp ::= (*) seqExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [seqExp ::= (*) LPAREN exps RPAREN , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) opExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp EQ (*) exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [intExp ::= (*) INT , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) negExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [negExp ::= (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) intExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on INT to state [2]
+      [cup] transition on exp to state [32]
+      [cup] transition on LPAREN to state [9]
+      [cup] transition on negExp to state [6]
+      [cup] transition on MINUS to state [1]
+      [cup] transition on seqExp to state [4]
+      [cup] transition on opExp to state [7]
+      [cup] transition on intExp to state [8]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [20]: {
+      [cup]   [exp ::= (*) seqExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [seqExp ::= (*) LPAREN exps RPAREN , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) opExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [intExp ::= (*) INT , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) negExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp LE (*) exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [negExp ::= (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) intExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on INT to state [2]
+      [cup] transition on exp to state [31]
+      [cup] transition on LPAREN to state [9]
+      [cup] transition on negExp to state [6]
+      [cup] transition on MINUS to state [1]
+      [cup] transition on seqExp to state [4]
+      [cup] transition on opExp to state [7]
+      [cup] transition on intExp to state [8]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [21]: {
+      [cup]   [opExp ::= exp GT (*) exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) seqExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [seqExp ::= (*) LPAREN exps RPAREN , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) opExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [intExp ::= (*) INT , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) negExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [negExp ::= (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) intExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on INT to state [2]
+      [cup] transition on exp to state [30]
+      [cup] transition on LPAREN to state [9]
+      [cup] transition on negExp to state [6]
+      [cup] transition on MINUS to state [1]
+      [cup] transition on seqExp to state [4]
+      [cup] transition on opExp to state [7]
+      [cup] transition on intExp to state [8]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [22]: {
+      [cup]   [exp ::= (*) seqExp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp DIVIDE exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GT exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [seqExp ::= (*) LPAREN exps RPAREN , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) opExp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp MINUS exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LT exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp OR exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exps ::= (*) exp , {RPAREN }]
+      [cup]   [intExp ::= (*) INT , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp EQ exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GE exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exps ::= (*) exp , {RPAREN }]
+      [cup]   [exp ::= (*) negExp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp TIMES exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LE exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [negExp ::= (*) MINUS exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) intExp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp PLUS exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp NEQ exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exps ::= exp SEMICOLON (*) exps , {RPAREN }]
+      [cup]   [opExp ::= (*) exp AND exp , {SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exps ::= (*) exp SEMICOLON exps , {RPAREN }]
+      [cup] }
+      [cup] transition on LPAREN to state [9]
+      [cup] transition on intExp to state [8]
+      [cup] transition on exps to state [29]
+      [cup] transition on opExp to state [7]
+      [cup] transition on negExp to state [6]
+      [cup] transition on seqExp to state [4]
+      [cup] transition on exp to state [10]
+      [cup] transition on INT to state [2]
+      [cup] transition on MINUS to state [1]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [23]: {
+      [cup]   [exp ::= (*) seqExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [seqExp ::= (*) LPAREN exps RPAREN , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) opExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [intExp ::= (*) INT , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp TIMES (*) exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) negExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [negExp ::= (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) intExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on INT to state [2]
+      [cup] transition on exp to state [28]
+      [cup] transition on LPAREN to state [9]
+      [cup] transition on negExp to state [6]
+      [cup] transition on MINUS to state [1]
+      [cup] transition on seqExp to state [4]
+      [cup] transition on opExp to state [7]
+      [cup] transition on intExp to state [8]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [24]: {
+      [cup]   [exp ::= (*) seqExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [seqExp ::= (*) LPAREN exps RPAREN , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) opExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp LT (*) exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [intExp ::= (*) INT , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) negExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [negExp ::= (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) intExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on INT to state [2]
+      [cup] transition on exp to state [27]
+      [cup] transition on LPAREN to state [9]
+      [cup] transition on negExp to state [6]
+      [cup] transition on MINUS to state [1]
+      [cup] transition on seqExp to state [4]
+      [cup] transition on opExp to state [7]
+      [cup] transition on intExp to state [8]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [25]: {
+      [cup]   [exp ::= (*) seqExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [seqExp ::= (*) LPAREN exps RPAREN , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) opExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp OR (*) exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [intExp ::= (*) INT , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) negExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [negExp ::= (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [exp ::= (*) intExp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= (*) exp AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on INT to state [2]
+      [cup] transition on exp to state [26]
+      [cup] transition on LPAREN to state [9]
+      [cup] transition on negExp to state [6]
+      [cup] transition on MINUS to state [1]
+      [cup] transition on seqExp to state [4]
+      [cup] transition on opExp to state [7]
+      [cup] transition on intExp to state [8]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [26]: {
+      [cup]   [opExp ::= exp (*) AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp OR exp (*) , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on OR to state [25]
+      [cup] transition on LT to state [24]
+      [cup] transition on TIMES to state [23]
+      [cup] transition on GT to state [21]
+      [cup] transition on LE to state [20]
+      [cup] transition on EQ to state [19]
+      [cup] transition on PLUS to state [18]
+      [cup] transition on NEQ to state [17]
+      [cup] transition on GE to state [16]
+      [cup] transition on DIVIDE to state [15]
+      [cup] transition on AND to state [14]
+      [cup] transition on MINUS to state [13]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [27]: {
+      [cup]   [opExp ::= exp (*) AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp LT exp (*) , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on OR to state [25]
+      [cup] transition on LT to state [24]
+      [cup] transition on TIMES to state [23]
+      [cup] transition on GT to state [21]
+      [cup] transition on LE to state [20]
+      [cup] transition on EQ to state [19]
+      [cup] transition on PLUS to state [18]
+      [cup] transition on NEQ to state [17]
+      [cup] transition on GE to state [16]
+      [cup] transition on DIVIDE to state [15]
+      [cup] transition on AND to state [14]
+      [cup] transition on MINUS to state [13]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [28]: {
+      [cup]   [opExp ::= exp (*) AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp TIMES exp (*) , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on OR to state [25]
+      [cup] transition on LT to state [24]
+      [cup] transition on TIMES to state [23]
+      [cup] transition on GT to state [21]
+      [cup] transition on LE to state [20]
+      [cup] transition on EQ to state [19]
+      [cup] transition on PLUS to state [18]
+      [cup] transition on NEQ to state [17]
+      [cup] transition on GE to state [16]
+      [cup] transition on DIVIDE to state [15]
+      [cup] transition on AND to state [14]
+      [cup] transition on MINUS to state [13]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [29]: {
+      [cup]   [exps ::= exp SEMICOLON exps (*) , {RPAREN }]
+      [cup] }
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [30]: {
+      [cup]   [opExp ::= exp (*) AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp GT exp (*) , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on OR to state [25]
+      [cup] transition on LT to state [24]
+      [cup] transition on TIMES to state [23]
+      [cup] transition on GT to state [21]
+      [cup] transition on LE to state [20]
+      [cup] transition on EQ to state [19]
+      [cup] transition on PLUS to state [18]
+      [cup] transition on NEQ to state [17]
+      [cup] transition on GE to state [16]
+      [cup] transition on DIVIDE to state [15]
+      [cup] transition on AND to state [14]
+      [cup] transition on MINUS to state [13]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [31]: {
+      [cup]   [opExp ::= exp (*) AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp LE exp (*) , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on OR to state [25]
+      [cup] transition on LT to state [24]
+      [cup] transition on TIMES to state [23]
+      [cup] transition on GT to state [21]
+      [cup] transition on LE to state [20]
+      [cup] transition on EQ to state [19]
+      [cup] transition on PLUS to state [18]
+      [cup] transition on NEQ to state [17]
+      [cup] transition on GE to state [16]
+      [cup] transition on DIVIDE to state [15]
+      [cup] transition on AND to state [14]
+      [cup] transition on MINUS to state [13]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [32]: {
+      [cup]   [opExp ::= exp (*) AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp EQ exp (*) , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on OR to state [25]
+      [cup] transition on LT to state [24]
+      [cup] transition on TIMES to state [23]
+      [cup] transition on GT to state [21]
+      [cup] transition on LE to state [20]
+      [cup] transition on EQ to state [19]
+      [cup] transition on PLUS to state [18]
+      [cup] transition on NEQ to state [17]
+      [cup] transition on GE to state [16]
+      [cup] transition on DIVIDE to state [15]
+      [cup] transition on AND to state [14]
+      [cup] transition on MINUS to state [13]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [33]: {
+      [cup]   [opExp ::= exp (*) AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp PLUS exp (*) , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on OR to state [25]
+      [cup] transition on LT to state [24]
+      [cup] transition on TIMES to state [23]
+      [cup] transition on GT to state [21]
+      [cup] transition on LE to state [20]
+      [cup] transition on EQ to state [19]
+      [cup] transition on PLUS to state [18]
+      [cup] transition on NEQ to state [17]
+      [cup] transition on GE to state [16]
+      [cup] transition on DIVIDE to state [15]
+      [cup] transition on AND to state [14]
+      [cup] transition on MINUS to state [13]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [34]: {
+      [cup]   [opExp ::= exp (*) AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp NEQ exp (*) , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on OR to state [25]
+      [cup] transition on LT to state [24]
+      [cup] transition on TIMES to state [23]
+      [cup] transition on GT to state [21]
+      [cup] transition on LE to state [20]
+      [cup] transition on EQ to state [19]
+      [cup] transition on PLUS to state [18]
+      [cup] transition on NEQ to state [17]
+      [cup] transition on GE to state [16]
+      [cup] transition on DIVIDE to state [15]
+      [cup] transition on AND to state [14]
+      [cup] transition on MINUS to state [13]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [35]: {
+      [cup]   [opExp ::= exp (*) AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp GE exp (*) , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on OR to state [25]
+      [cup] transition on LT to state [24]
+      [cup] transition on TIMES to state [23]
+      [cup] transition on GT to state [21]
+      [cup] transition on LE to state [20]
+      [cup] transition on EQ to state [19]
+      [cup] transition on PLUS to state [18]
+      [cup] transition on NEQ to state [17]
+      [cup] transition on GE to state [16]
+      [cup] transition on DIVIDE to state [15]
+      [cup] transition on AND to state [14]
+      [cup] transition on MINUS to state [13]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [36]: {
+      [cup]   [opExp ::= exp (*) AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp DIVIDE exp (*) , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on OR to state [25]
+      [cup] transition on LT to state [24]
+      [cup] transition on TIMES to state [23]
+      [cup] transition on GT to state [21]
+      [cup] transition on LE to state [20]
+      [cup] transition on EQ to state [19]
+      [cup] transition on PLUS to state [18]
+      [cup] transition on NEQ to state [17]
+      [cup] transition on GE to state [16]
+      [cup] transition on DIVIDE to state [15]
+      [cup] transition on AND to state [14]
+      [cup] transition on MINUS to state [13]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [37]: {
+      [cup]   [opExp ::= exp (*) AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp AND exp (*) , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on OR to state [25]
+      [cup] transition on LT to state [24]
+      [cup] transition on TIMES to state [23]
+      [cup] transition on GT to state [21]
+      [cup] transition on LE to state [20]
+      [cup] transition on EQ to state [19]
+      [cup] transition on PLUS to state [18]
+      [cup] transition on NEQ to state [17]
+      [cup] transition on GE to state [16]
+      [cup] transition on DIVIDE to state [15]
+      [cup] transition on AND to state [14]
+      [cup] transition on MINUS to state [13]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [38]: {
+      [cup]   [opExp ::= exp (*) AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp MINUS exp (*) , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on OR to state [25]
+      [cup] transition on LT to state [24]
+      [cup] transition on TIMES to state [23]
+      [cup] transition on GT to state [21]
+      [cup] transition on LE to state [20]
+      [cup] transition on EQ to state [19]
+      [cup] transition on PLUS to state [18]
+      [cup] transition on NEQ to state [17]
+      [cup] transition on GE to state [16]
+      [cup] transition on DIVIDE to state [15]
+      [cup] transition on AND to state [14]
+      [cup] transition on MINUS to state [13]
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [39]: {
+      [cup]   [$START ::= program EOF (*) , {EOF }]
+      [cup] }
+      [cup] 
+      [cup] -------------------
+      [cup] lalr_state [40]: {
+      [cup]   [opExp ::= exp (*) AND exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) EQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) MINUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [negExp ::= MINUS exp (*) , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) LT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) DIVIDE exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) PLUS exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) OR exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) GT exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) NEQ exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup]   [opExp ::= exp (*) TIMES exp , {EOF SEMICOLON RPAREN PLUS MINUS TIMES DIVIDE EQ NEQ LT LE GT GE AND OR }]
+      [cup] }
+      [cup] transition on OR to state [25]
+      [cup] transition on LT to state [24]
+      [cup] transition on TIMES to state [23]
+      [cup] transition on GT to state [21]
+      [cup] transition on LE to state [20]
+      [cup] transition on EQ to state [19]
+      [cup] transition on PLUS to state [18]
+      [cup] transition on NEQ to state [17]
+      [cup] transition on GE to state [16]
+      [cup] transition on DIVIDE to state [15]
+      [cup] transition on AND to state [14]
+      [cup] transition on MINUS to state [13]
+      [cup] 
+      [cup] -------------------
+      [cup] ------- CUP v0.11a beta 20060608 Parser Generation Summary -------
+      [cup]   1 error and 33 warnings
+      [cup]   47 terminals, 7 non-terminals, and 24 productions declared, 
+      [cup]   producing 41 unique parse states.
+      [cup]   29 terminals declared but not used.
+      [cup]   0 non-terminals declared but not used.
+      [cup]   0 productions never reduced.
+      [cup]   3 conflicts detected (1 expected).
+      [cup]   No code produced.
+      [cup] ---------------------------------------------------- (v0.11a beta 20060608)

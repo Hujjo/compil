@@ -1,0 +1,7 @@
+  LetExp [pos='3:1' _typeDefinition='null']
+    VarDec [pos='4:6' _typeDefinition='null' _forVariable='null' _depth='0' _access='null' _escapes='false' name='a' type='null']
+      SeqExp [pos='0:0' _typeDefinition='null']
+    SeqExp [pos='6:4' _typeDefinition='null']
+      OpExp [pos='6:4' _typeDefinition='null' op='+']
+        SimpleVar [pos='6:2' _typeDefinition='null' _declaration='null' _depth='0' name='a']
+        IntegerExp [pos='6:6' _typeDefinition='null' value='3']

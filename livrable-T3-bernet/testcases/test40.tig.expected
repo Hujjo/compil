@@ -1,0 +1,8 @@
+  LetExp [pos='2:1' _typeDefinition='null']
+    FuncsDec [pos='3:2']
+      FuncDec [pos='3:2' _label='_L2g' _resultTypeDefinition='null' _depth='0' name='g' result='null']
+        VarDec [pos='3:13' _typeDefinition='null' _forVariable='null' _depth='0' _access='null' _escapes='false' name='a' type='int']
+        SimpleVar [pos='3:22' _typeDefinition='null' _declaration='null' _depth='0' name='a']
+    SeqExp [pos='5:2' _typeDefinition='null']
+      CallExp [pos='5:2' _typeDefinition='null' _declaration='null' _depth='0' func='g']
+        IntegerExp [pos='5:4' _typeDefinition='null' value='2']

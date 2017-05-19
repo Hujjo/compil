@@ -1,0 +1,201 @@
+package jtiger.parser;
+import java.util.LinkedList;
+import java.util.Arrays;
+import java_cup.runtime.*;
+import jtiger.ast.*;
+import jtiger.util.Position;
+import jtiger.util.Errors;
+import jtiger.bind.Id;
+
+parser code {:
+    @Override
+    public void syntax_error(Symbol s) {
+        Position p = new Position(s.left, s.right);
+        Errors.error(p, "Parser Error");
+    }
+:};
+
+/* Terminals */
+terminal COMMA,COLON,SEMICOLON,LPAREN,RPAREN,LBRACK,RBRACK;
+terminal LBRACE,RBRACE,DOT,PLUS,MINUS,TIMES,DIVIDE,EQ,NEQ,LT,LE,GT,GE;
+terminal AND,OR,ASSIGN,ARRAY,IF,THEN,ELSE,WHILE,FOR,TO,DO,LET,IN,END,OF;
+terminal BREAK,NIL,FUNCTION,VAR,TYPE;
+terminal String ID, STRING;
+terminal Integer INT;
+terminal LOWPREC,UMINUS;
+
+/* Non-terminals */
+nonterminal Exp exp,intExp,opExp,negExp,seqExp,program;
+nonterminal LetExp letExp;
+nonterminal Id id,typeannotation;
+nonterminal SeqExp exps;
+nonterminal FuncsDec funcsDec;
+nonterminal FuncDec funcDec;
+nonterminal LinkedList<Dec> decs;
+nonterminal Dec dec,varDec;
+nonterminal VarDec param;
+nonterminal LinkedList<VarDec> params;
+nonterminal NilExp nilExp;
+nonterminal StringExp stringExp;
+
+/* Precedence */
+precedence left OR;
+precedence left AND;
+precedence nonassoc EQ, NEQ, LT, LE, GT, GE;
+precedence left PLUS, MINUS;
+precedence left TIMES, DIVIDE;
+precedence left UMINUS;
+precedence left LPAREN, RPAREN;
+
+/* Grammar */
+
+start with program;
+ 
+program::=  exp:e
+        {: 
+            RESULT = e;
+        :};
+
+exp ::= intExp:e {: RESULT=e; :}
+    |   opExp:e {: RESULT=e; :}
+    |   negExp:e {: RESULT=e; :}
+    |   seqExp:e {: RESULT=e; :}
+    |   letExp:e {: RESULT=e; :}
+    |   nilExp:e {: RESULT=e; :}
+    |   stringExp:e {: RESULT=e; :}
+/*    |   var:e {: RESULT=e; :}
+    |   assignExp:e {: RESULT=e; :}
+    |   callExp:e {: RESULT=e; :}*/
+    ;
+
+/* intExp */
+intExp ::= INT:n
+        {: RESULT = new IntegerExp(new Position(nleft,nright), n); :}
+        ;
+
+/* opExp */
+opExp ::= exp:e1 PLUS:p exp:e2
+        {: RESULT = new OpExp(new Position(pleft,pright), e1, "+", e2); :}
+        |
+        exp:e1 MINUS:p exp:e2
+        {: RESULT = new OpExp(new Position(pleft,pright), e1, "-", e2); :}
+        |
+        exp:e1 TIMES:p exp:e2
+        {: RESULT = new OpExp(new Position(pleft,pright), e1, "*", e2); :}
+        |
+        exp:e1 DIVIDE:p exp:e2
+        {: RESULT = new OpExp(new Position(pleft,pright), e1, "/", e2); :}
+        |
+        exp:e1 EQ:p exp:e2
+        {: RESULT = new OpExp(new Position(pleft,pright), e1, "==", e2); :}
+        |
+        exp:e1 NEQ:p exp:e2
+        {: RESULT = new OpExp(new Position(pleft,pright), e1, "<>", e2); :}
+        |
+        exp:e1 LT:p exp:e2
+        {: RESULT = new OpExp(new Position(pleft,pright), e1, "<", e2); :}
+        |
+        exp:e1 LE:p exp:e2
+        {: RESULT = new OpExp(new Position(pleft,pright), e1, "<=", e2); :}
+        |
+        exp:e1 GT:p exp:e2
+        {: RESULT = new OpExp(new Position(pleft,pright), e1, ">", e2); :}
+        |
+        exp:e1 GE:p exp:e2
+        {: RESULT = new OpExp(new Position(pleft,pright), e1, ">=", e2); :}
+        |
+        exp:e1 AND:p exp:e2
+        {: 
+           RESULT = new IfExp(new Position(pleft,pright), e1, e2, new IntegerExp(new Position(pleft,pright), 0));
+        :}
+        |
+        exp:e1 OR:p exp:e2
+        {: 
+            RESULT = new IfExp(new Position(pleft,pright), e1, new IntegerExp(new Position(pleft,pright), 1), e2); :}
+        ;
+
+/* negExp */
+negExp::= MINUS:p exp:e
+        {: RESULT = new OpExp(new Position(pleft,pright), new IntegerExp(new Position(pleft,pright), 0), "-", e); :}
+        %prec UMINUS
+        ;
+
+/* seqExp */
+seqExp::= LPAREN:l exps:es RPAREN:r {: RESULT=es; :}
+        | 
+        LPAREN RPAREN:s 
+        {:LinkedList<Exp> l = new LinkedList<Exp>(); RESULT = new SeqExp(new Position(sleft,sright), l);:}
+        ;
+
+exps ::= exp:e
+        {: 
+            LinkedList<Exp> l = new LinkedList<Exp>(); l.add(e);
+            RESULT = new SeqExp(new Position(eleft,eright), l); 
+        :}
+        |    exps:es SEMICOLON exp:e {:  es.exps.add(e); RESULT = es; :}
+        ;
+
+/* letExp */
+letExp ::= LET:lt decs:d IN exps:es END:e
+        {: RESULT = new LetExp(new Position(eleft,eright),d,es); :}
+        ;
+
+/* dec */       
+decs ::= dec:d
+        {:
+                LinkedList<Dec> l = new LinkedList<Dec>(); l.add(d);
+                RESULT = l;
+        :}
+        |       decs:ds dec:d {: ds.add(d); RESULT = ds; :}
+        ;
+
+dec ::= varDec:v {: RESULT = v; :}
+        | funcsDec:fs {: RESULT = fs; :}
+	;
+
+varDec ::= VAR:v id:i typeannotation:t ASSIGN exp:e
+        {: RESULT = new VarDec(new Position(vleft,vright),i,t,e); :}
+        ;
+
+funcsDec ::= funcDec:d
+        {:
+                LinkedList<FuncDec> l = new LinkedList<FuncDec>(); l.add(d);
+                RESULT = new FuncsDec(new Position(dleft,dright),l);
+        :}
+        |       funcsDec:ds funcDec:d {: ds.funcs.add(d); RESULT = ds; :}
+        ;
+
+funcDec ::= FUNCTION:f id:i LPAREN params:ps RPAREN typeannotation:t EQ exp:e
+        {: RESULT = new FuncDec(new Position(fleft,fright),i,ps,t,e); :}
+        ;
+
+params ::= param:p
+        {:
+                LinkedList<VarDec> l = new LinkedList<VarDec>(); l.add(p);
+                RESULT = l;
+        :}
+        |       params:ps COMMA param:p {: ps.add(p); RESULT = ps; :}
+        ;
+
+param ::= id:i1 COLON id:i2
+        {: RESULT = new VarDec(new Position(i1left,i1right),i1,i2,null); :}
+        ;
+
+typeannotation ::= COLON id:i
+        {: RESULT = i;  :}
+        ;
+
+id ::= ID:i
+        {: RESULT = Id.create(i);  :}
+        ;
+
+/* nilExp */
+nilExp ::= NIL:n
+        {: RESULT = new NilExp(new Position(nleft,nright)); :}
+        ;
+
+/* stringExp */
+stringExp ::= STRING:s
+        {: RESULT = new StringExp(new Position(sleft,sright),s); :}
+        ;
+
