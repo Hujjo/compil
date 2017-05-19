@@ -37,6 +37,14 @@ nonterminal VarDec param;
 nonterminal LinkedList<VarDec> params;
 nonterminal NilExp nilExp;
 nonterminal StringExp stringExp;
+nonterminal Var var;
+nonterminal SimpleVar simpleVar;
+nonterminal RecordVar recordVar;
+nonterminal ArrayVar arrayVar;
+nonterminal AssignExp assignExp;
+nonterminal LinkedList<Exp> arguments;
+nonterminal Exp argument;
+nonterminal CallExp callExp;
 
 /* Precedence */
 precedence left OR;
@@ -63,9 +71,9 @@ exp ::= intExp:e {: RESULT=e; :}
     |   letExp:e {: RESULT=e; :}
     |   nilExp:e {: RESULT=e; :}
     |   stringExp:e {: RESULT=e; :}
-/*    |   var:e {: RESULT=e; :}
+    |   var:e {: RESULT=e; :}
     |   assignExp:e {: RESULT=e; :}
-    |   callExp:e {: RESULT=e; :}*/
+/*    |   callExp:e {: RESULT=e; :}*/
     ;
 
 /* intExp */
@@ -136,8 +144,10 @@ exps ::= exp:e
         ;
 
 /* letExp */
-letExp ::= LET:lt decs:d IN exps:es END:e
-        {: RESULT = new LetExp(new Position(eleft,eright),d,es); :}
+letExp ::= LET:lt decs:ds IN exps:es END
+        {: RESULT = new LetExp(new Position(ltleft,ltright),ds,es); :}
+		|	LET:lt decs:ds IN END
+			{: RESULT = new LetExp(new Position(ltleft,ltright),ds,null); :}
         ;
 
 /* dec */       
@@ -199,3 +209,41 @@ stringExp ::= STRING:s
         {: RESULT = new StringExp(new Position(sleft,sright),s); :}
         ;
 
+/* var */
+var ::= simpleVar:sv		{: RESULT = sv; :}
+		|	arrayVar:av		{: RESULT = av; :}
+		|	recordVar:rv	{: RESULT = rv; :}
+		;
+
+simpleVar ::= id:i	{: RESULT = new SimpleVar(new Position(ileft,iright),i); :};
+
+arrayVar ::= var:v LBRACK exp:e RBRACK
+		{: RESULT = new ArrayVar(new Position(vleft,vright),v,e); :}
+		;
+
+recordVar ::= var:v DOT id:i
+		{: RESULT = new RecordVar(new Position(vleft,vright),v,i); :}
+		;
+
+/* assignEx */
+assignExp ::= var:v ASSIGN exp:e
+		{: RESULT = new AssignExp(new Position(vleft,vright),v,e); :}
+		;
+
+/* callExp */
+callExp ::= id:i LPAREN arguments:as RPAREN
+		{: RESULT = new callExp(new Position(ileft,iright),i,as); :}
+		;
+
+arguments ::= argument:a
+		{:
+			LinkedList<Exp> l = new LinkedList<Exp>(); l.add(p);
+			RESULT = l;
+		:}
+		|	arguments:as COMMA argument:a {: as.add(a); RESULT = as; :}
+		|	nilExp:n	{: RESULT = new NilExp(new Position(nleft,nright)); :}
+		;
+
+argument ::= exp:e
+		{:	RESULT = e; :}
+		;
