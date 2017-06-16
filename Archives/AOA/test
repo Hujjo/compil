@@ -1,0 +1,724 @@
+
+-----------------warm-up 0------------
+Cycles per iter.: 11.52
+Cycles per iter.: 9.77
+Cycles per iter.: 9.77
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+Cycles per iter.: 9.14
+Cycles per iter.: 8.80
+Cycles per iter.: 9.13
+Cycles per iter.: 8.85
+Cycles per iter.: 9.14
+Cycles per iter.: 9.13
+Cycles per iter.: 8.80
+Cycles per iter.: 8.80
+Cycles per iter.: 8.80
+Cycles per iter.: 8.80
+Cycles per iter.: 8.80
+Cycles per iter.: 8.79
+Cycles per iter.: 8.80
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.80
+Cycles per iter.: 8.80
+Cycles per iter.: 8.80
+Cycles per iter.: 11.67
+Cycles per iter.: 9.48
+Cycles per iter.: 9.42
+
+---------------------------warm-up 1-------------
+
+Cycles per iter.: 10.99
+Cycles per iter.: 9.77
+Cycles per iter.: 10.40
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 9.10
+Cycles per iter.: 8.79
+Cycles per iter.: 9.67
+Cycles per iter.: 9.12
+Cycles per iter.: 9.15
+Cycles per iter.: 9.12
+Cycles per iter.: 11.28
+Cycles per iter.: 8.79
+Cycles per iter.: 10.55
+Cycles per iter.: 9.42
+Cycles per iter.: 9.42
+Cycles per iter.: 10.28
+Cycles per iter.: 9.10
+Cycles per iter.: 9.66
+Cycles per iter.: 8.79
+Cycles per iter.: 9.43
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 10.99
+Cycles per iter.: 11.10
+
+---------------- warmup 2------------------------
+
+
+Cycles per iter.: 32.98
+Cycles per iter.: 14.66
+Cycles per iter.: 14.72
+Cycles per iter.: 14.66
+Cycles per iter.: 14.08
+Cycles per iter.: 11.30
+Cycles per iter.: 9.14
+Cycles per iter.: 8.79
+Cycles per iter.: 9.62
+Cycles per iter.: 10.99
+Cycles per iter.: 10.15
+Cycles per iter.: 10.15
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 9.83
+Cycles per iter.: 9.17
+Cycles per iter.: 9.61
+Cycles per iter.: 8.79
+Cycles per iter.: 9.57
+Cycles per iter.: 10.49
+Cycles per iter.: 9.12
+Cycles per iter.: 9.10
+Cycles per iter.: 8.84
+Cycles per iter.: 8.79
+Cycles per iter.: 8.80
+Cycles per iter.: 8.87
+
+----------------wamup3---------------
+
+Cycles per iter.: 32.98
+Cycles per iter.: 34.79
+Cycles per iter.: 33.02
+Cycles per iter.: 14.86
+Cycles per iter.: 14.77
+Cycles per iter.: 14.68
+Cycles per iter.: 14.68
+Cycles per iter.: 14.66
+Cycles per iter.: 14.66
+Cycles per iter.: 10.99
+Cycles per iter.: 10.99
+Cycles per iter.: 9.77
+Cycles per iter.: 9.38
+Cycles per iter.: 8.82
+Cycles per iter.: 8.79
+Cycles per iter.: 9.42
+Cycles per iter.: 8.83
+Cycles per iter.: 8.79
+Cycles per iter.: 9.13
+Cycles per iter.: 10.53
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.81
+Cycles per iter.: 10.99
+Cycles per iter.: 11.50
+Cycles per iter.: 10.15
+Cycles per iter.: 9.42
+Cycles per iter.: 8.80
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+
+----------------------warmup4--------------------
+
+Cycles per iter.: 9.77
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 10.55
+Cycles per iter.: 10.15
+Cycles per iter.: 9.11
+Cycles per iter.: 9.15
+Cycles per iter.: 8.79
+Cycles per iter.: 9.15
+Cycles per iter.: 9.99
+Cycles per iter.: 10.82
+Cycles per iter.: 11.34
+Cycles per iter.: 11.57
+Cycles per iter.: 9.42
+Cycles per iter.: 9.10
+Cycles per iter.: 11.36
+Cycles per iter.: 10.99
+Cycles per iter.: 10.99
+Cycles per iter.: 10.59
+Cycles per iter.: 10.99
+Cycles per iter.: 9.77
+Cycles per iter.: 10.25
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.82
+Cycles per iter.: 11.71
+
+-------------------------warmup5-------------------
+
+Cycles per iter.: 17.59
+Cycles per iter.: 17.59
+Cycles per iter.: 17.59
+Cycles per iter.: 17.59
+Cycles per iter.: 17.59
+Cycles per iter.: 18.45
+Cycles per iter.: 11.05
+Cycles per iter.: 9.21
+Cycles per iter.: 9.16
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+Cycles per iter.: 10.08
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 9.79
+Cycles per iter.: 9.67
+Cycles per iter.: 10.99
+Cycles per iter.: 10.15
+Cycles per iter.: 10.18
+Cycles per iter.: 9.18
+Cycles per iter.: 9.10
+Cycles per iter.: 8.80
+Cycles per iter.: 8.80
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+
+----------------warmup6----------------
+
+
+Cycles per iter.: 14.66
+Cycles per iter.: 15.70
+Cycles per iter.: 14.66
+Cycles per iter.: 14.66
+Cycles per iter.: 14.66
+Cycles per iter.: 11.47
+Cycles per iter.: 9.14
+Cycles per iter.: 8.79
+Cycles per iter.: 9.12
+Cycles per iter.: 9.42
+Cycles per iter.: 9.10
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 10.99
+Cycles per iter.: 9.77
+Cycles per iter.: 10.27
+Cycles per iter.: 9.87
+Cycles per iter.: 8.79
+Cycles per iter.: 10.99
+Cycles per iter.: 10.99
+Cycles per iter.: 11.03
+Cycles per iter.: 11.00
+Cycles per iter.: 9.10
+Cycles per iter.: 11.05
+Cycles per iter.: 9.56
+Cycles per iter.: 10.49
+Cycles per iter.: 9.10
+Cycles per iter.: 9.45
+Cycles per iter.: 11.47
+Cycles per iter.: 8.80
+
+----------------warmup7----------------
+
+Cycles per iter.: 14.66
+Cycles per iter.: 14.66
+Cycles per iter.: 14.66
+Cycles per iter.: 14.66
+Cycles per iter.: 14.66
+Cycles per iter.: 14.66
+Cycles per iter.: 15.93
+Cycles per iter.: 22.10
+Cycles per iter.: 21.21
+Cycles per iter.: 9.19
+Cycles per iter.: 9.12
+Cycles per iter.: 9.13
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 9.73
+Cycles per iter.: 10.99
+Cycles per iter.: 10.56
+Cycles per iter.: 9.77
+Cycles per iter.: 10.99
+Cycles per iter.: 9.77
+Cycles per iter.: 11.26
+Cycles per iter.: 11.51
+Cycles per iter.: 9.77
+Cycles per iter.: 9.10
+Cycles per iter.: 10.46
+Cycles per iter.: 8.80
+Cycles per iter.: 9.12
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+Cycles per iter.: 8.80
+
+----------------warmup8----------------
+
+Cycles per iter.: 14.66
+Cycles per iter.: 14.66
+Cycles per iter.: 14.66
+Cycles per iter.: 14.66
+Cycles per iter.: 14.66
+Cycles per iter.: 11.01
+Cycles per iter.: 9.78
+Cycles per iter.: 9.18
+Cycles per iter.: 9.12
+Cycles per iter.: 8.81
+Cycles per iter.: 10.99
+Cycles per iter.: 9.77
+Cycles per iter.: 10.75
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 10.55
+Cycles per iter.: 11.65
+Cycles per iter.: 9.77
+Cycles per iter.: 9.10
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 9.14
+Cycles per iter.: 9.87
+Cycles per iter.: 9.43
+Cycles per iter.: 9.10
+Cycles per iter.: 8.80
+Cycles per iter.: 9.10
+Cycles per iter.: 8.81
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+
+----------------warmup9----------------
+
+Cycles per iter.: 10.15
+Cycles per iter.: 9.10
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 10.99
+Cycles per iter.: 10.75
+Cycles per iter.: 9.77
+Cycles per iter.: 9.14
+Cycles per iter.: 8.79
+Cycles per iter.: 10.13
+Cycles per iter.: 8.91
+Cycles per iter.: 11.07
+Cycles per iter.: 9.11
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 10.55
+Cycles per iter.: 9.42
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 9.83
+Cycles per iter.: 9.33
+Cycles per iter.: 9.47
+Cycles per iter.: 9.10
+Cycles per iter.: 9.26
+
+----------------warmup10----------------
+
+Cycles per iter.: 32.98
+Cycles per iter.: 14.66
+Cycles per iter.: 14.72
+Cycles per iter.: 14.68
+Cycles per iter.: 14.92
+Cycles per iter.: 14.82
+Cycles per iter.: 10.99
+Cycles per iter.: 10.46
+Cycles per iter.: 9.77
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 10.80
+Cycles per iter.: 11.43
+Cycles per iter.: 9.77
+Cycles per iter.: 8.79
+Cycles per iter.: 9.46
+Cycles per iter.: 9.11
+Cycles per iter.: 8.80
+Cycles per iter.: 8.80
+Cycles per iter.: 10.66
+Cycles per iter.: 10.55
+Cycles per iter.: 9.46
+Cycles per iter.: 8.80
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 9.80
+Cycles per iter.: 8.83
+Cycles per iter.: 8.79
+Cycles per iter.: 11.00
+
+----------------warmup11----------------
+
+Cycles per iter.: 10.99
+Cycles per iter.: 10.55
+Cycles per iter.: 9.42
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+Cycles per iter.: 9.22
+Cycles per iter.: 9.12
+Cycles per iter.: 10.91
+Cycles per iter.: 8.79
+Cycles per iter.: 10.99
+Cycles per iter.: 9.77
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 10.55
+Cycles per iter.: 9.91
+Cycles per iter.: 9.95
+Cycles per iter.: 8.79
+Cycles per iter.: 9.63
+Cycles per iter.: 9.67
+Cycles per iter.: 10.15
+Cycles per iter.: 11.00
+Cycles per iter.: 9.14
+Cycles per iter.: 8.81
+Cycles per iter.: 8.80
+
+----------------warmup12----------------
+
+
+Cycles per iter.: 32.98
+Cycles per iter.: 14.66
+Cycles per iter.: 14.66
+Cycles per iter.: 15.00
+Cycles per iter.: 11.67
+Cycles per iter.: 9.16
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 10.81
+Cycles per iter.: 8.79
+Cycles per iter.: 9.91
+Cycles per iter.: 9.12
+Cycles per iter.: 10.59
+Cycles per iter.: 9.14
+Cycles per iter.: 9.10
+Cycles per iter.: 8.86
+Cycles per iter.: 9.12
+Cycles per iter.: 9.23
+Cycles per iter.: 8.79
+Cycles per iter.: 9.67
+Cycles per iter.: 10.50
+Cycles per iter.: 8.80
+Cycles per iter.: 9.43
+Cycles per iter.: 8.80
+
+----------------warmup13----------------
+
+
+Cycles per iter.: 14.66
+Cycles per iter.: 14.66
+Cycles per iter.: 14.66
+Cycles per iter.: 14.66
+Cycles per iter.: 14.66
+Cycles per iter.: 14.66
+Cycles per iter.: 11.05
+Cycles per iter.: 10.21
+Cycles per iter.: 9.18
+Cycles per iter.: 9.14
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 9.79
+Cycles per iter.: 9.77
+Cycles per iter.: 10.99
+Cycles per iter.: 10.15
+Cycles per iter.: 9.23
+Cycles per iter.: 9.10
+Cycles per iter.: 9.77
+Cycles per iter.: 9.11
+Cycles per iter.: 12.13
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+
+----------------warmup14----------------
+
+
+Cycles per iter.: 20.30
+Cycles per iter.: 20.29
+Cycles per iter.: 10.99
+Cycles per iter.: 10.55
+Cycles per iter.: 9.42
+Cycles per iter.: 8.79
+Cycles per iter.: 9.10
+Cycles per iter.: 9.11
+Cycles per iter.: 8.79
+Cycles per iter.: 9.22
+Cycles per iter.: 8.83
+Cycles per iter.: 8.83
+Cycles per iter.: 8.82
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 9.90
+Cycles per iter.: 8.79
+Cycles per iter.: 9.42
+Cycles per iter.: 10.72
+Cycles per iter.: 10.99
+Cycles per iter.: 9.77
+Cycles per iter.: 10.99
+Cycles per iter.: 10.99
+Cycles per iter.: 11.06
+Cycles per iter.: 9.81
+Cycles per iter.: 11.05
+Cycles per iter.: 10.99
+Cycles per iter.: 9.78
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+Cycles per iter.: 8.79
+
+----------------warmup15----------------
+
+
+Cycles per iter.: 32.98
+Cycles per iter.: 33.15
+Cycles per iter.: 14.71
+Cycles per iter.: 15.13
+Cycles per iter.: 14.90
+Cycles per iter.: 10.15
+Cycles per iter.: 9.10
+Cycles per iter.: 8.79
+Cycles per iter.: 11.05
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.92
+Cycles per iter.: 9.10
+Cycles per iter.: 9.12
+Cycles per iter.: 8.80
+Cycles per iter.: 9.10
+Cycles per iter.: 9.11
+Cycles per iter.: 9.10
+Cycles per iter.: 9.78
+Cycles per iter.: 9.10
+Cycles per iter.: 9.43
+Cycles per iter.: 9.11
+Cycles per iter.: 8.79
+Cycles per iter.: 9.10
+Cycles per iter.: 8.80
+Cycles per iter.: 8.79
+Cycles per iter.: 9.77
+
+----------------warmup16----------------
+
+
+
+Cycles per iter.: 32.98
+Cycles per iter.: 10.99
+Cycles per iter.: 11.04
+Cycles per iter.: 9.12
+Cycles per iter.: 9.10
+Cycles per iter.: 8.81
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 11.00
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 9.14
+Cycles per iter.: 9.86
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 9.61
+Cycles per iter.: 9.15
+Cycles per iter.: 11.40
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+Cycles per iter.: 8.80
+Cycles per iter.: 9.65
+Cycles per iter.: 8.80
+Cycles per iter.: 9.42
+Cycles per iter.: 8.79
+Cycles per iter.: 9.10
+Cycles per iter.: 8.93
+
+----------------warmup17----------------
+
+Cycles per iter.: 32.98
+Cycles per iter.: 33.15
+Cycles per iter.: 14.66
+Cycles per iter.: 15.30
+Cycles per iter.: 14.89
+Cycles per iter.: 14.66
+Cycles per iter.: 14.65
+Cycles per iter.: 14.66
+Cycles per iter.: 14.66
+Cycles per iter.: 10.99
+Cycles per iter.: 11.00
+Cycles per iter.: 8.80
+Cycles per iter.: 8.80
+Cycles per iter.: 9.16
+Cycles per iter.: 10.55
+Cycles per iter.: 8.80
+Cycles per iter.: 9.10
+Cycles per iter.: 8.80
+Cycles per iter.: 8.79
+Cycles per iter.: 12.37
+Cycles per iter.: 8.79
+Cycles per iter.: 9.78
+Cycles per iter.: 10.48
+Cycles per iter.: 9.11
+Cycles per iter.: 10.15
+Cycles per iter.: 9.98
+Cycles per iter.: 8.79
+Cycles per iter.: 9.42
+Cycles per iter.: 9.10
+Cycles per iter.: 9.79
+Cycles per iter.: 10.99
+
+----------------warmup18----------------
+
+
+Cycles per iter.: 9.10
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 10.61
+Cycles per iter.: 8.79
+Cycles per iter.: 10.99
+Cycles per iter.: 9.83
+Cycles per iter.: 9.34
+Cycles per iter.: 9.18
+Cycles per iter.: 9.18
+Cycles per iter.: 8.80
+Cycles per iter.: 8.79
+Cycles per iter.: 9.10
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 9.64
+Cycles per iter.: 11.01
+Cycles per iter.: 9.42
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 9.11
+Cycles per iter.: 11.25
+Cycles per iter.: 9.84
+Cycles per iter.: 13.25
+Cycles per iter.: 8.80
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+
+----------------warmup19----------------
+
+
+Cycles per iter.: 15.52
+Cycles per iter.: 15.52
+Cycles per iter.: 10.99
+Cycles per iter.: 9.77
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 9.10
+Cycles per iter.: 8.79
+Cycles per iter.: 9.28
+Cycles per iter.: 8.90
+Cycles per iter.: 8.79
+Cycles per iter.: 10.99
+Cycles per iter.: 10.15
+Cycles per iter.: 9.10
+Cycles per iter.: 10.99
+Cycles per iter.: 9.77
+Cycles per iter.: 8.79
+Cycles per iter.: 10.59
+Cycles per iter.: 10.99
+Cycles per iter.: 11.06
+Cycles per iter.: 9.65
+Cycles per iter.: 11.18
+Cycles per iter.: 10.32
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+Cycles per iter.: 9.10
+Cycles per iter.: 10.55
+Cycles per iter.: 8.82
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 11.27
+
+----------------warmup20----------------
+
+
+Cycles per iter.: 29.31
+Cycles per iter.: 29.32
+Cycles per iter.: 11.05
+Cycles per iter.: 10.55
+Cycles per iter.: 9.56
+Cycles per iter.: 9.10
+Cycles per iter.: 8.79
+Cycles per iter.: 9.64
+Cycles per iter.: 8.79
+Cycles per iter.: 9.10
+Cycles per iter.: 8.79
+Cycles per iter.: 8.79
+Cycles per iter.: 11.06
+Cycles per iter.: 10.99
+Cycles per iter.: 10.99
+Cycles per iter.: 10.99
+Cycles per iter.: 9.78
+Cycles per iter.: 8.79
+Cycles per iter.: 8.80
+Cycles per iter.: 10.99
+Cycles per iter.: 9.11
+Cycles per iter.: 8.79
+Cycles per iter.: 8.80
+Cycles per iter.: 9.10
+Cycles per iter.: 8.80
+Cycles per iter.: 8.80
+Cycles per iter.: 8.85
+Cycles per iter.: 8.79
+Cycles per iter.: 9.77
+Cycles per iter.: 9.55
+Cycles per iter.: 8.80

@@ -1,0 +1,154 @@
+package jtiger.parser;
+import java.util.LinkedList;
+import java.util.Arrays;
+import java_cup.runtime.*;
+import jtiger.ast.*;
+import jtiger.bind.Id;
+import jtiger.util.Position;
+import jtiger.util.Errors;
+
+parser code {:
+    @Override
+    public void syntax_error(Symbol s) {
+        Position p = new Position(s.left, s.right);
+        Errors.error(p, "Parser Error");
+    }
+:};
+
+/* Terminals */
+terminal COMMA,COLON,SEMICOLON,LPAREN,RPAREN,LBRACK,RBRACK;
+terminal LBRACE,RBRACE,DOT,PLUS,MINUS,TIMES,DIVIDE,EQ,NEQ,LT,LE,GT,GE;
+terminal AND,OR,ASSIGN,ARRAY,IF,THEN,ELSE,WHILE,FOR,TO,DO,LET,IN,END,OF;
+terminal BREAK,NIL,FUNCTION,VAR,TYPE;
+terminal String ID, STRING;
+terminal Integer INT;
+terminal LOWPREC,UMINUS;
+
+/* Non-terminals */
+nonterminal Var var,simpleVar,arrayVar,recordVar;
+nonterminal LinkedList<ExpField>  efields, some_efields;
+nonterminal Field field;
+nonterminal VarDec param;
+nonterminal ExpField efield;
+nonterminal Dec dec,varDec;
+nonterminal LinkedList<Dec> decs;
+nonterminal TypeDec typeDec; 
+nonterminal LinkedList<Field> fields,some_fields; 
+nonterminal LinkedList<VarDec> params,some_params; 
+nonterminal Id id,typeannotation;
+nonterminal Exp exp,nilExp,intExp,stringExp,arrayExp, 
+            recordExp,seqExp,callExp,opExp,negExp,
+            assignExp,ifExp,whileExp,forExp,breakExp,letExp, program;
+nonterminal SeqExp expr,nonemptyexps;
+nonterminal SeqExp exprList;
+nonterminal TypeDef nameType,recordType,arrayType,type;
+nonterminal TypesDec typesDec;
+nonterminal FuncsDec funcsDec;
+nonterminal FuncDec funcDec;
+nonterminal LinkedList<Exp> arguments, some_arguments;
+
+/* Precedence */
+precedence nonassoc LOWPREC;
+precedence nonassoc FUNCTION,VAR,TYPE,THEN,DO,OF,ASSIGN;
+precedence right ELSE;
+precedence left OR;
+
+precedence left AND;
+precedence nonassoc EQ,NEQ,LT,LE,GT,GE;
+precedence left PLUS,MINUS;
+precedence left TIMES,DIVIDE;
+precedence left UMINUS;
+
+/* FIXME */
+	
+/* Grammar */
+
+start with program;
+
+exprList  ::= 	expr:e2 SEMICOLON:semicolon  exprList:e1
+				{:
+						e1.exps.add(e2);
+						RESULT = e1;
+				:}
+		    |
+				expr:e
+				{:
+						LinkedList exps_ = new LinkedList();
+						exps_.add(e);
+						RESULT = new SeqExp(new Position(eleft,eright),exps_);
+				:}
+;
+
+expr      ::= 	expr:e1 PLUS:p expr:e2    
+	      			{: RESULT = new OpExp(new Position(pleft, pright),e1, "+", e2);  :} 
+	        |  	expr:e1 MINUS:m expr:e2    
+              		{: RESULT = new OpExp(new Position(mleft, mright), e1, "-", e2); :} 
+	        |  	expr:e1 TIMES:t expr:e2 
+	      			{: RESULT = new OpExp(new Position(tleft, tright), e1, "*", e2); :}
+	        | 	expr:e1 DIVIDE:d expr:e2 
+	      			{: RESULT = new OpExp(new Position(dleft, dright), e1, "/", e2); :} 
+	        | 	expr:e1 EQ:eq expr:e2
+	       			{: RESULT = new OpExp(new Position(eqleft, eqright), e1, "=", e2); :}
+	        |	expr:e1 NEQ:neq expr:e2
+          			{: RESULT = new OpExp(new Position(neqleft, neqright), e1, "<>", e2); :}
+	        |	expr:e1 OR:o expr:e2
+		  			{: RESULT = new IfExp(new Position(oleft, oright),e1,new IntegerExp(new Position(), 1), e2); :}
+		    |	expr:e1 AND:a expr:e2
+	     			{: RESULT = new IfExp(new Position(aleft, aright), e1, e2, new IntegerExp(new Position(), 0)); :}
+	        |	expr:e1 LT:lt expr:e2
+					{: RESULT = new OpExp(new Position(ltleft, ltright), e1, "<", e2); :}
+		    |	expr:e1 GT:gt expr:e2
+					{: RESULT = new OpExp(new Position(gtleft, gtright), e1, ">", e2); :}
+	        |	expr:e1 LE:le expr:e2
+					{: RESULT = new OpExp(new Position(leleft, leright), e1, ">=", e2); :}
+		    |	expr:e1 GE:ge expr:e2
+					{: RESULT = new OpExp(new Position(geleft, geright), e1, ">=", e2); :}
+		    |	INT:n                 
+	         		{: RESULT = new IntegerExp(new Position(nleft, nright), n.intValue()); :} 
+	        |  	MINUS:minus expr:e             
+	        		{: RESULT = new OpExp(new Position(minusleft, minusright), new IntegerExp(new Position(), 0), "-", e); :} 
+	     %prec UMINUS
+	        |  	LPAREN exprList:exprlistparen RPAREN
+	      			{: RESULT = new SeqExp(new Position(exprlistparenleft, exprlistparenright), exprlistparen.exps); :}
+	        | 	LPAREN RPAREN
+	      			{: RESULT = new SeqExp(new Position(), new LinkedList<Exp>()); :}	
+	        |	LBRACK exprList:elistbrack RBRACK
+					{: RESULT = new SeqExp(new Position(elistbrackleft, elistbrackright), elistbrack.exps); :}
+				LetExp:e
+					{: RESULT = e; :}
+	      ;
+
+LetExp ::= LET:lt decs:d IN exprList:el END
+	{:
+		RESULT = new LetExp(ltleft,ltright,d,el);
+	:}
+;
+
+decs := decs:ds dec:d {: ds.add(d); RESULT = ds :}
+     | {: RESULT = new LinkedList<Seq>(); :};
+
+dec ::= varDec {: RESULT = new Dec() :}
+	|	funcsDec {: RESULT = new FuncsDec() :};
+	
+varDec ::= Dec {: RESULT = new Dec() :}
+		`var` id typeannotation `:=`exp
+		
+funcsDec ::= { funcDec }
+funcDec ::=
+		`function` id `(` params `)` typeannotation `=` exp
+	
+params ::=
+		[ param { `,` param } ]
+
+param ::= id `:` id
+
+typeannotation ::= | `:` id
+
+id := ID
+*/
+	      
+program::= expr:e 
+{: 
+System.out.println("Le résultat est:" + e);
+RESULT = e;
+:};

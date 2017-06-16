@@ -1,0 +1,8 @@
+    let 
+        type int1 = int
+        type int2 = int1
+        var i1 : int := 21
+        var i2 : int2 := 42 
+    in
+        i1 := i2
+    end

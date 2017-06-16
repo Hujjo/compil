@@ -45,6 +45,10 @@ nonterminal AssignExp assignExp;
 nonterminal LinkedList<Exp> arguments;
 nonterminal Exp argument;
 nonterminal CallExp callExp;
+nonterminal BreakExp breakExp;
+nonterminal IfExp ifExp;
+nonterminal WhileExp whileExp;
+nonterminal ForExp forExp;
 
 /* Precedence */
 precedence left OR;
@@ -73,7 +77,11 @@ exp ::= intExp:e {: RESULT=e; :}
     |   stringExp:e {: RESULT=e; :}
     |   var:e {: RESULT=e; :}
     |   assignExp:e {: RESULT=e; :}
-/*    |   callExp:e {: RESULT=e; :}*/
+    |   callExp:e {: RESULT=e; :}
+    |   breakExp:e {: RESULT=e; :}
+    |   ifExp:e {: RESULT=e; :}
+    |   whileExp:e {: RESULT=e; :}
+    |   forExp:e {: RESULT=e; :}
     ;
 
 /* intExp */
@@ -191,7 +199,7 @@ param ::= id:i1 COLON id:i2
         {: RESULT = new VarDec(new Position(i1left,i1right),i1,i2,null); :}
         ;
 
-typeannotation ::= COLON id:i
+typeannotation ::= | COLON id:i
         {: RESULT = i;  :}
         ;
 
@@ -211,39 +219,63 @@ stringExp ::= STRING:s
 
 /* var */
 var ::= simpleVar:sv		{: RESULT = sv; :}
-		|	arrayVar:av		{: RESULT = av; :}
-		|	recordVar:rv	{: RESULT = rv; :}
-		;
+	|	arrayVar:av	{: RESULT = av; :}
+	|	recordVar:rv	{: RESULT = rv; :}
+	;
 
 simpleVar ::= id:i	{: RESULT = new SimpleVar(new Position(ileft,iright),i); :};
 
 arrayVar ::= var:v LBRACK exp:e RBRACK
-		{: RESULT = new ArrayVar(new Position(vleft,vright),v,e); :}
-		;
+	{: RESULT = new ArrayVar(new Position(vleft,vright),v,e); :}
+	;
 
 recordVar ::= var:v DOT id:i
-		{: RESULT = new RecordVar(new Position(vleft,vright),v,i); :}
-		;
+	{: RESULT = new RecordVar(new Position(vleft,vright),v,i); :}
+	;
 
 /* assignEx */
 assignExp ::= var:v ASSIGN exp:e
-		{: RESULT = new AssignExp(new Position(vleft,vright),v,e); :}
-		;
+	{: RESULT = new AssignExp(new Position(vleft,vright),v,e); :}
+	;
 
 /* callExp */
 callExp ::= id:i LPAREN arguments:as RPAREN
-		{: RESULT = new callExp(new Position(ileft,iright),i,as); :}
-		;
+	{: RESULT = new CallExp(new Position(ileft,iright),i,as); :}
+	| id:i LPAREN RPAREN
+	{: RESULT = new CallExp(new Position(ileft,iright),i,null); :}
+	;
 
 arguments ::= argument:a
-		{:
-			LinkedList<Exp> l = new LinkedList<Exp>(); l.add(p);
-			RESULT = l;
-		:}
-		|	arguments:as COMMA argument:a {: as.add(a); RESULT = as; :}
-		|	nilExp:n	{: RESULT = new NilExp(new Position(nleft,nright)); :}
-		;
+	{:
+		LinkedList<Exp> l = new LinkedList<Exp>(); l.add(a);
+		RESULT = l;
+	:}
+	|	arguments:as COMMA argument:a {: as.add(a); RESULT = as; :}
+	;
 
 argument ::= exp:e
-		{:	RESULT = e; :}
-		;
+	{:	RESULT = e; :}
+	;
+
+/* breakExp */
+breakExp ::= BREAK:b
+        {:      RESULT = new BreakExp(new Position(bleft,bright)); :}
+        ;
+// id:i ASSIGN exp:e1
+/*forExp ::= FOR:f varDec:v TO exp:e2 DO exp:e3
+        {:      RESULT = new ForExp(new Position(fleft,fright),v,e2,e3); :}
+        ;
+*/
+whileExp ::= WHILE:w exp:e1 DO exp:e2
+        {:      RESULT = new WhileExp(new Position(wleft,wright),e1,e2); :}
+        ;
+
+ifExp ::= 
+/*
+        IF:i exp:e1 THEN exp:e2
+        {: RESULT = new IfExp(new Position(ileft,iright),e1,e2,null); :}
+        | 
+*/
+        IF:i exp:e1 THEN exp:e2 ELSE exp:e3
+        {: RESULT = new IfExp(new Position(ileft,iright),e1,e2,e3); :}
+        ;

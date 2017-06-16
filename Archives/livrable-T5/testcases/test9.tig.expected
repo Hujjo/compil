@@ -1,0 +1,2 @@
+3:4 Variable i declared at 2:5 is read-only
+2:1 For loop's lower bound should be int

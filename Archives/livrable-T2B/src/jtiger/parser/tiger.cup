@@ -1,0 +1,177 @@
+package jtiger.parser;
+import java.util.LinkedList;
+import java.util.Arrays;
+import java_cup.runtime.*;
+import jtiger.util.Position;
+import jtiger.util.Errors;
+import jtiger.ast.*;
+
+parser code {:
+    @Override
+    public void syntax_error(Symbol s) {
+        Position p = new Position(s.left, s.right);
+        Errors.error(p, "Parser Error");
+    }
+:};
+
+
+/* Terminals */
+terminal COMMA,COLON,SEMICOLON,LPAREN,RPAREN,LBRACK,RBRACK;
+terminal LBRACE,RBRACE,DOT,PLUS,MINUS,TIMES,DIVIDE,EQ,NEQ,LT,LE,GT,GE;
+terminal AND,OR,ASSIGN,ARRAY,IF,THEN,ELSE,WHILE,FOR,TO,DO,LET,IN,END,OF;
+terminal BREAK,NIL,FUNCTION,VAR,TYPE;
+terminal String ID, STRING;
+terminal Integer INT;
+terminal LOWPREC,UMINUS;
+
+
+/* Non-terminals */
+nonterminal Integer expr,intExp,opExp,negExp,seqExp,program;
+
+/* Precedence */
+
+precedence nonassoc ASSIGN;
+precedence left OR, AND;
+precedence nonassoc EQ, NEQ, LT, LE, GT, GE;
+precedence left PLUS, MINUS;
+precedence left TIMES, DIVIDE;
+precedence left UMINUS;
+
+/* FIXME */
+
+/* Grammar */
+
+start with program;
+
+
+expr      ::= expr:e1 PLUS expr:e2    
+	      {: RESULT = new Integer(e1.intValue() + e2.intValue()); :} 
+	      
+	      | 
+              expr:e1 MINUS expr:e2    
+              {: RESULT = new Integer(e1.intValue() - e2.intValue()); :} 
+              
+	      | 
+              expr:e1 TIMES expr:e2 
+	      {: RESULT = new Integer(e1.intValue() * e2.intValue()); :}
+	      
+	      | 
+              expr:e1 DIVIDE expr:e2 
+	      {: RESULT = new Integer(e1.intValue() / e2.intValue()); :} 
+	      
+	      | 
+	      
+	           expr:e1 EQ expr:e2
+	       {: 
+	            if(e1.intValue() == e2.intValue()) 
+	            RESULT=1;
+	            else RESULT=0;
+	       :}
+	       
+	       |
+	       
+	       expr:e1 NEQ expr:e2
+          {: if(e1.intValue() != e2.intValue()) 
+	            RESULT =1;
+	            else RESULT=0;
+	            :}
+	       
+	       |
+	       
+	       expr:e1 OR expr:e2
+		  {: if(e1!=0 || e2!=0)
+	            RESULT =1;
+	          else RESULT=0;
+	            :}
+	       
+	       |
+	       
+	       expr:e1 AND expr:e2
+	       {: 
+	            if(e1!=0 && e1!=0) 
+	            RESULT=1;
+	            else RESULT=0;
+	       :}
+	       
+	       |
+
+			expr:e1 LT expr:e2
+			{: 
+			 	if(e1 < e2) 
+	            RESULT=1;
+	            else RESULT=0;
+	        :}
+	
+		   |
+		   
+		   	expr:e1 GT expr:e2
+			{: 
+			 	if(e1 > e2) 
+	            RESULT=1;
+	            else RESULT=0;
+	        :}
+	        
+	         |
+	        
+	        expr:e1 LE expr:e2
+			{: 
+			 	if(e1 <= e2) 
+	            RESULT=1;
+	            else RESULT=0;
+	        :}
+	
+		   |
+		   
+		   
+	        expr:e1 GE expr:e2
+			{: 
+			 	if(e1 >= e2) 
+	            RESULT=1;
+	            else RESULT=0;
+	        :}
+	
+			 |
+			 
+			  VAR:e1 ASSIGN expr:e2
+			{: 
+			 	RESULT=new Integer(e2.intValue());
+	        :}
+	
+			 |
+	        
+             INT:n                 
+	      {: RESULT = n; :} 
+	      | 
+              MINUS expr:e             
+	      {: RESULT = new Integer(0 - e.intValue()); :} 
+	     %prec UMINUS
+	      | 
+              LPAREN expr:e RPAREN     
+	      {: RESULT = e; :} 
+	      ;
+	      
+	      
+	      /* séquence d'instructions */
+	      
+	      seqExp ::=expr:e
+			{: 
+			 	if(e1 >= e2) 
+	            RESULT=1;
+	            else RESULT=0;
+	        :}
+	      
+		 exprSeq
+		 
+		 
+		  expr_part ::= expr:e 
+	      {: System.out.println("= " + e); :} 
+              SEMI              
+	      ;
+ 
+program::= expr:e 
+{: 
+System.out.println("Le résultat est:" + e);
+RESULT = new Integer(e.intValue());
+:};
+
+/* FIXME */

@@ -1,0 +1,8 @@
+  LetExp [pos='4:1' _typeDefinition='null']
+    TypesDec [pos='6:2']
+      TypeDec [pos='5:2' name='a']
+        NameType [pos='5:11' _typeDefinition='null' type='int']
+      TypeDec [pos='6:2' name='a']
+        NameType [pos='6:11' _typeDefinition='null' type='string']
+    SeqExp [pos='8:2' _typeDefinition='null']
+      IntegerExp [pos='8:2' _typeDefinition='null' value='0']

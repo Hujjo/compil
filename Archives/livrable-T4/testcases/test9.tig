@@ -1,0 +1,11 @@
+let
+    var a:=0
+    var b:=a
+in
+    let
+        var a:= b
+    in
+        a
+    end ;
+    a+b
+end

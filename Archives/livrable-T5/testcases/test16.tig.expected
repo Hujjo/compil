@@ -1,0 +1,2 @@
+8:11 Both operands should have the same type
+5:1 Function <nfactor> returns <IntegerTy>, expected <VoidTy>

@@ -1,0 +1,9 @@
+    let
+        type rec1 = { val : int }
+        type rec2 = { val : int }
+        var r1 : rec1 := rec1 { val = 42 }
+        var r2 : rec2 := rec2 { val = 21 }
+    in
+        r1 := r2
+    end
+

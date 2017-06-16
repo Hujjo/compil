@@ -1,0 +1,7 @@
+  IfExp [pos='2:1' _typeDefinition='null']
+    SeqExp [pos='2:8' _typeDefinition='null']
+      OpExp [pos='2:8' _typeDefinition='null' op='>']
+        IntegerExp [pos='2:5' _typeDefinition='null' value='10']
+        IntegerExp [pos='2:10' _typeDefinition='null' value='20']
+    IntegerExp [pos='2:19' _typeDefinition='null' value='30']
+    IntegerExp [pos='2:27' _typeDefinition='null' value='40']

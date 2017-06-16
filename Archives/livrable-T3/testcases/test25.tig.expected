@@ -1,0 +1,6 @@
+  LetExp [pos='2:1' _typeDefinition='null']
+    VarDec [pos='3:6' _typeDefinition='null' _forVariable='null' _depth='0' _access='null' _escapes='false' name='d' type='null']
+      IntegerExp [pos='3:9' _typeDefinition='null' value='0']
+    SeqExp [pos='5:2' _typeDefinition='null']
+      RecordVar [pos='5:2' _typeDefinition='null' _fieldPos='0' field='f']
+        SimpleVar [pos='5:2' _typeDefinition='null' _declaration='null' _depth='0' name='d']

@@ -1,0 +1,2 @@
+7:12 Type mismatch, expected <StringTy> got <IntegerTy>
+8:10 Type mismatch, expected <IntegerTy> got <StringTy>

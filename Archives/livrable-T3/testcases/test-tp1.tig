@@ -1,0 +1,5 @@
+let
+    var a : int := 0
+    function foo ( a : int, b : int) : int = ()
+in
+end

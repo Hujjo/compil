@@ -1,0 +1,5 @@
+    let 
+        type int1 = int2
+        type int2 = int1
+    in
+    end

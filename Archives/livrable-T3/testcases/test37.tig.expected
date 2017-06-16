@@ -1,0 +1,7 @@
+  LetExp [pos='3:1' _typeDefinition='null']
+    VarDec [pos='4:6' _typeDefinition='null' _forVariable='null' _depth='0' _access='null' _escapes='false' name='a' type='null']
+      IntegerExp [pos='4:11' _typeDefinition='null' value='0']
+    VarDec [pos='5:6' _typeDefinition='null' _forVariable='null' _depth='0' _access='null' _escapes='false' name='a' type='null']
+      StringExp [pos='5:13' _typeDefinition='null' value=' ']
+    SeqExp [pos='7:2' _typeDefinition='null']
+      IntegerExp [pos='7:2' _typeDefinition='null' value='0']

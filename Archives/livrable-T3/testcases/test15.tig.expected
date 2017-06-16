@@ -1,0 +1,3 @@
+  IfExp [pos='3:1' _typeDefinition='null']
+    IntegerExp [pos='3:4' _typeDefinition='null' value='20']
+    IntegerExp [pos='3:12' _typeDefinition='null' value='3']

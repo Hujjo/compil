@@ -1,0 +1,8 @@
+exp:e1 PLUS:p exp:e2 {:
+RESULT = new OpExp(new Position(pleft,pright), e1, "+", e2);
+
+INT : i {: RESULT               5 => IntegerExp(5)
+
+
+= new IntegerExp (new Position(ileft, iright)           new IntegerExp(Position pos, Integer value)
+:{ Integer.parseInt(i));
